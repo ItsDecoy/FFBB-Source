@@ -9,14 +9,17 @@ import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxMath;
+import flixel.math.FlxRandom;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
+import flixel.util.FlxStringUtil;
 import flixel.util.FlxTimer;
 import meta.CoolUtil;
+import meta.InfoHud;
 import meta.data.Conductor;
 import meta.data.Timings;
 import meta.state.PlayState;
@@ -26,30 +29,29 @@ using StringTools;
 class ClassHUD extends FlxTypedGroup<FlxBasic>
 {
 	// set up variables and stuff here
+	var infoBar:FlxText; // small side bar like kade engine that tells you engine info
 	var scoreBar:FlxText;
+
 	var scoreLast:Float = -1;
+	var scoreDisplay:String;
 
-	// fnf mods
-	var scoreDisplay:String = 'beep bop bo skdkdkdbebedeoop brrapadop';
+	private var timeBarBG:FlxSprite;
+	private var timeBar:FlxBar;
 
-	var cornerMark:FlxText; // engine mark at the upper right corner
-	var centerMark:FlxText; // song display name and difficulty at the center
-
-	private var healthBarBG:FlxSprite;
-	private var healthBar:FlxBar;
+	public static var healthBFBB:FlxSprite;
+	public static var underwearHealthGroup:FlxTypedGroup<FlxSprite>;
+	public static var practiceText:FlxText;
 
 	private var SONG = PlayState.SONG;
-
 	public var iconP1:HealthIcon;
-	public var iconP2:HealthIcon;
-
+	public static var iconP2:HealthIcon;
 	private var stupidHealth:Float = 0;
 
-	private var timingsMap:Map<String, FlxText> = [];
+	public var timeCheck:Float = 0;
+	public var timeText:FlxText;
+	public var timeEnabled:Bool = false;
 
-	var infoDisplay:String = CoolUtil.dashToSpace(PlayState.SONG.song);
-	var diffDisplay:String = CoolUtil.difficultyFromNumber(PlayState.storyDifficulty);
-	var engineDisplay:String = "FOREVER ENGINE v" + Main.gameVersion;
+	private var timingsMap:Map<String, FlxText> = [];
 
 	// eep
 	public function new()
@@ -57,71 +59,117 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		// call the initializations and stuffs
 		super();
 
-		// le healthbar setup
-		var barY = FlxG.height * 0.875;
+		// fnf mods
+		var scoreDisplay:String = 'beep bop bo skdkdkdbebedeoop brrapadop';
+
+		var timeY = 16.00;
+		var icon1Y = FlxG.height * 0.760;
+		var icon2Y = FlxG.height * 0.720;
 		if (Init.trueSettings.get('Downscroll'))
-			barY = 64;
+		{
+			timeY = FlxG.height * 0.965;
+			icon1Y = 20;
+			icon2Y = 2;
+		}
 
-		healthBarBG = new FlxSprite(0,
-			barY).loadGraphic(Paths.image(ForeverTools.returnSkinAsset('healthBar', PlayState.assetModifier, PlayState.changeableSkin, 'UI')));
-		healthBarBG.screenCenter(X);
-		healthBarBG.scrollFactor.set();
-		add(healthBarBG);
+		timeCheck = 100 / PlayState.songMusic.length;
+		if (Init.trueSettings.get('Timer Bar'))
+			timeEnabled = true;
 
-		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8));
-		healthBar.scrollFactor.set();
-		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
-		// healthBar
-		add(healthBar);
+		if (Init.trueSettings.get('Timer Bar'))
+		{
+			timeBarBG = new FlxSprite(0,
+				timeY).loadGraphic(Paths.image(ForeverTools.returnSkinAsset('timerBar', PlayState.assetModifier, PlayState.changeableSkin, 'UI')));
+			timeBarBG.screenCenter(X);
+			timeBarBG.scrollFactor.set();
+			timeBarBG.visible = timeEnabled;
+			add(timeBarBG);
+
+			timeBar = new FlxBar(timeBarBG.x + 4, timeBarBG.y + 4, LEFT_TO_RIGHT, Std.int(timeBarBG.width - 8), Std.int(timeBarBG.height - 8));
+			timeBar.scrollFactor.set();
+			timeBar.createFilledBar(FlxColor.BLACK, FlxColor.YELLOW);
+			timeBar.numDivisions = 10000;
+			timeBar.visible = timeEnabled;
+			add(timeBar);
+
+			timeText = new FlxText(0, timeY + 16);
+			timeText.setFormat(Paths.font("sponge.ttf"), 32, FlxColor.YELLOW, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			timeText.screenCenter(X);
+			timeText.x -= 27;
+			if (Init.trueSettings.get('Downscroll'))
+				timeText.y = timeY - 38;
+			timeText.scrollFactor.set();
+			timeText.visible = timeEnabled;
+			add(timeText);
+		}
 
 		iconP1 = new HealthIcon(SONG.player1, true);
-		iconP1.y = healthBar.y - (iconP1.height / 2);
+		iconP1.x = FlxG.width * 0.735;
+		iconP1.y = icon1Y;
+		iconP1.setGraphicSize(Std.int(iconP1.width * 0.725));
 		add(iconP1);
 
 		iconP2 = new HealthIcon(SONG.player2, false);
-		iconP2.y = healthBar.y - (iconP2.height / 2);
+		iconP2.x = FlxG.width * 0.008;
+		iconP2.y = icon2Y;
+		iconP2.setGraphicSize(Std.int(iconP2.width * 0.855));
 		add(iconP2);
 
-		scoreBar = new FlxText(FlxG.width / 2, Math.floor(healthBarBG.y + 40), 0, scoreDisplay);
-		scoreBar.setFormat(Paths.font('vcr.ttf'), 18, FlxColor.WHITE);
-		scoreBar.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
+		// This process I coded makes the healthbar animation for the opponent without the need of an XML - doubletime32
+		healthBFBB = new FlxSprite(iconP2.x + 193.94, iconP2.y + 119.8);
+		healthBFBB.loadGraphic(Paths.image('UI/default/base/HP'), true, 174, 51);
+		healthBFBB.setGraphicSize(Std.int(healthBFBB.width * 0.84));
+		add(healthBFBB);
+
+		// This process I've created makes a group of underwear sprites as health so we don't need 6 different pictures of the sprite
+		// in the files to save space - doubletime32
+		underwearHealthGroup = new FlxTypedGroup<FlxSprite>();
+		add(underwearHealthGroup);
+		for (i in 0...6)
+		{
+			var underwearTrack:FlxSprite = new FlxSprite((iconP1.x + 92.94) - (i * 57), iconP1.y + 80.8);
+			underwearTrack.loadGraphic(Paths.image('UI/default/base/Underwear'), true, 81, 81);
+			underwearTrack.setGraphicSize(Std.int(underwearTrack.width * 0.75));
+			underwearTrack.antialiasing = true;
+			underwearTrack.ID = i;
+			underwearHealthGroup.add(underwearTrack);
+		}
+
+		// This right here tracks each of those individual sprites and makes them move up and down at a random value and time
+		// to give it the proper bubble movement just like in the game ;) - doubletime32
+		underwearHealthGroup.forEach(function(spr:FlxSprite)
+		{
+			FlxTween.tween(spr, {y: FlxG.random.float(iconP1.y + 82.7, iconP1.y + 78.12)}, FlxG.random.float(0.9, 1.5), {ease: FlxEase.sineInOut, type: PINGPONG});
+		});
+
+		practiceText = new FlxText(0, 150);
+		practiceText.text = 'Practice Mode';
+		practiceText.setFormat(Paths.font("sponge.otf"), 32, FlxColor.YELLOW, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		practiceText.screenCenter(X);
+		practiceText.visible = false;
+		FlxTween.tween(practiceText, {alpha: 0}, 1, {type: PINGPONG});
+		add(practiceText);
+
+		scoreBar = new FlxText(FlxG.width / 2, ((Init.trueSettings.get('Downscroll')) ? 50 : (FlxG.height * 0.835)), 0, scoreDisplay, 20);
+		scoreBar.setFormat(Paths.font("sponge.otf"), 16, FlxColor.YELLOW, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		updateScoreText();
-		// scoreBar.scrollFactor.set();
+		scoreBar.scrollFactor.set();
 		scoreBar.antialiasing = true;
+		scoreBar.visible = true;
 		add(scoreBar);
 
-		cornerMark = new FlxText(0, 0, 0, engineDisplay);
-		cornerMark.setFormat(Paths.font('vcr.ttf'), 18, FlxColor.WHITE);
-		cornerMark.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
-		add(cornerMark);
-		cornerMark.setPosition(FlxG.width - (cornerMark.width + 5), 5);
-		cornerMark.antialiasing = true;
-
-		centerMark = new FlxText(0, 0, 0, '- ${infoDisplay + " [" + diffDisplay}] -');
-		centerMark.setFormat(Paths.font('vcr.ttf'), 24, FlxColor.WHITE);
-		centerMark.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
-		add(centerMark);
-		if (Init.trueSettings.get('Downscroll'))
-			centerMark.y = (FlxG.height - centerMark.height / 2) - 30;
-		else
-			centerMark.y = (FlxG.height / 24) - 10;
-		centerMark.screenCenter(X);
-		centerMark.antialiasing = true;
-
 		// counter
-		if (Init.trueSettings.get('Counter') != 'None')
-		{
+		if (Init.trueSettings.get('Counter') != 'None') {
 			var judgementNameArray:Array<String> = [];
 			for (i in Timings.judgementsMap.keys())
 				judgementNameArray.insert(Timings.judgementsMap.get(i)[0], i);
 			judgementNameArray.sort(sortByShit);
-			for (i in 0...judgementNameArray.length)
-			{
-				var textAsset:FlxText = new FlxText(5
-					+ (!left ? (FlxG.width - 10) : 0),
+			for (i in 0...judgementNameArray.length) {
+				var textAsset:FlxText = new FlxText(5 + (!left ? (FlxG.width - 10) : 0),
 					(FlxG.height / 2)
 					- (counterTextSize * (judgementNameArray.length / 2))
-					+ (i * counterTextSize), 0, '', counterTextSize);
+					+ (i * counterTextSize), 0,
+					'', counterTextSize);
 				if (!left)
 					textAsset.x -= textAsset.text.length * counterTextSize;
 				textAsset.setFormat(Paths.font("vcr.ttf"), counterTextSize, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -142,40 +190,45 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 
 	override public function update(elapsed:Float)
 	{
-		// pain, this is like the 7th attempt
-		healthBar.percent = (PlayState.health * 50);
+		if (Init.trueSettings.get('Timer Bar'))
+		{
+			timeBar.percent = Conductor.songPosition * timeCheck;
+			timeText.text = FlxStringUtil.formatTime(Std.int((PlayState.songMusic.length - Conductor.songPosition) / 1000), false);
+		}
 
-		var iconLerp = 0.85;
-		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.initialWidth, iconP1.width, iconLerp)));
-		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.initialWidth, iconP2.width, iconLerp)));
+		// Opponent health drain - doubletime32
+		healthBFBB.animation.frameIndex = PlayState.drainHealth;
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
 
-		var iconOffset:Int = 26;
+		if (PlayState.practiceMode)
+		{
+			practiceText.visible = true;
+			PlayState.songScore = 0;
+		}
+		else
+			practiceText.visible = false;
 
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
-
-		if (healthBar.percent < 20)
+		if (PlayState.underwearHealth <= 1)
 			iconP1.animation.curAnim.curFrame = 1;
 		else
 			iconP1.animation.curAnim.curFrame = 0;
 
-		if (healthBar.percent > 80)
+		if (healthBFBB.animation.frameIndex >= 6)
 			iconP2.animation.curAnim.curFrame = 1;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
 	}
 
-	private final divider:String = " • ";
+	private final divider:String = ' - ';
 
 	public function updateScoreText()
 	{
 		var importSongScore = PlayState.songScore;
 		var importPlayStateCombo = PlayState.combo;
 		var importMisses = PlayState.misses;
-		scoreBar.text = 'Score: $importSongScore';
+		scoreBar.text = 'Shinies: $importSongScore';
 		// testing purposes
 		var displayAccuracy:Bool = Init.trueSettings.get('Display Accuracy');
 		if (displayAccuracy)
@@ -184,14 +237,13 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			scoreBar.text += divider + 'Combo Breaks: ' + Std.string(PlayState.misses);
 			scoreBar.text += divider + 'Rank: ' + Std.string(Timings.returnScoreRating().toUpperCase());
 		}
-		scoreBar.text += '\n';
-		scoreBar.x = Math.floor((FlxG.width / 2) - (scoreBar.width / 2));
+
+		scoreBar.x = ((FlxG.width / 2) - (scoreBar.width / 2));
 
 		// update counter
 		if (Init.trueSettings.get('Counter') != 'None')
 		{
-			for (i in timingsMap.keys())
-			{
+			for (i in timingsMap.keys()) {
 				timingsMap[i].text = '${(i.charAt(0).toUpperCase() + i.substring(1, i.length))}: ${Timings.gottenJudgements.get(i)}';
 				timingsMap[i].x = (5 + (!left ? (FlxG.width - 10) : 0) - (!left ? (6 * counterTextSize) : 0));
 			}
@@ -202,16 +254,33 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		PlayState.updateRPC(false);
 	}
 
-	public function beatHit()
+	// Player health system - doubletime32
+	public function updateHealth(inputHealthTrack:Bool)
 	{
-		if (!Init.trueSettings.get('Reduced Movements'))
+		if (!inputHealthTrack)
 		{
-			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
-			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
-
-			iconP1.updateHitbox();
-			iconP2.updateHitbox();
+			PlayState.underwearHealth--;
+			PlayState.underwearHealthHeal = 0.3;
+			if (PlayState.underwearHealth >= -1)
+			{
+				underwearHealthGroup.members[PlayState.underwearHealth + 1].alpha = PlayState.underwearHealthHeal;
+				if (PlayState.underwearHealth < 4)
+					underwearHealthGroup.members[PlayState.underwearHealth + 2].alpha = PlayState.underwearHealthHeal;
+			}
 		}
-		//
+		else if (inputHealthTrack)
+		{
+			if (PlayState.underwearHealth >= -1)
+			{
+				PlayState.underwearHealthHeal = PlayState.underwearHealthHeal + 0.1;
+				underwearHealthGroup.members[PlayState.underwearHealth + 1].alpha = PlayState.underwearHealthHeal;
+				if (PlayState.underwearHealthHeal >= 1)
+				{
+					PlayState.underwearHealth++;
+					PlayState.underwearHealthHeal = 0.3;
+				}
+
+			}
+		}
 	}
 }

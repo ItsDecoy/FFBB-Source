@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sping.png"><SubTexture name="sping idle0000" x="0" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0000" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0001" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0002" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0003" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0004" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0005" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0006" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0007" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping down0008" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0000" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0001" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0002" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0003" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0004" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0005" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0006" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0007" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping left0008" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0000" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0001" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0002" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0003" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0004" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0005" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0006" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0007" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping right0008" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0000" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0001" x="1004" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0002" x="0" y="2787" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0003" x="0" y="2787" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0004" x="0" y="2787" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0005" x="0" y="2787" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0006" x="0" y="2787" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0007" x="0" y="2787" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="sping up0008" x="0" y="2787" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+</TextureAtlas>

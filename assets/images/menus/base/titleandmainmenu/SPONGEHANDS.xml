@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="spongehands.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="SB_DOUBLETIME0000" x="10" y="10" width="281" height="269" frameX="0" frameY="-8" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIME0001" x="301" y="10" width="277" height="268" frameX="-2" frameY="-9" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIME0002" x="588" y="10" width="263" height="272" frameX="-10" frameY="-5" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIME0003" x="861" y="10" width="207" height="274" frameX="-45" frameY="-3" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIME0004" x="1078" y="10" width="193" height="275" frameX="-59" frameY="-2" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIME0005" x="1281" y="10" width="193" height="277" frameX="-59" frameY="0" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIMECHANGE0000" x="1484" y="10" width="193" height="269" frameX="-62" frameY="-8" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIMECHANGE0001" x="1687" y="10" width="194" height="269" frameX="-61" frameY="-8" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIMECHANGE0002" x="10" y="297" width="193" height="272" frameX="-59" frameY="-5" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIMECHANGE0003" x="213" y="297" width="193" height="274" frameX="-59" frameY="-3" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIMECHANGE0004" x="416" y="297" width="196" height="275" frameX="-56" frameY="-2" frameWidth="281" frameHeight="277"/>
+	<SubTexture name="SB_DOUBLETIMECHANGE0005" x="622" y="297" width="199" height="276" frameX="-53" frameY="-1" frameWidth="281" frameHeight="277"/>
+</TextureAtlas>

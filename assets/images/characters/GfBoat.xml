@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="gf-boat.png"><SubTexture name="GF_BOAT0000" x="0" y="0" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0001" x="739" y="0" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0002" x="1478" y="0" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0003" x="0" y="726" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0004" x="739" y="726" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0005" x="1478" y="726" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0006" x="1478" y="726" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0007" x="0" y="1452" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0008" x="739" y="1452" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0009" x="1478" y="1452" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0010" x="0" y="2178" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0011" x="739" y="2178" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0012" x="1478" y="2178" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0013" x="0" y="2904" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0014" x="739" y="2904" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+<SubTexture name="GF_BOAT0015" x="739" y="2904" width="739" height="726" frameX="0" frameY="0" frameWidth="739" frameHeight="726" />
+</TextureAtlas>

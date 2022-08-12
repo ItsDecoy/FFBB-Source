@@ -5,12 +5,13 @@ import meta.state.PlayState;
 
 using StringTools;
 
-#if sys
+#if !html5
 import sys.FileSystem;
 #end
 
 class CoolUtil
 {
+	// tymgus45
 	public static var difficultyArray:Array<String> = ['EASY', "NORMAL", "HARD"];
 	public static var difficultyLength = difficultyArray.length;
 
@@ -61,9 +62,9 @@ class CoolUtil
 
 	public static function returnAssetsLibrary(library:String, ?subDir:String = 'assets/images'):Array<String>
 	{
+		//
 		var libraryArray:Array<String> = [];
-
-		#if sys
+		#if !html5
 		var unfilteredLibrary = FileSystem.readDirectory('$subDir/$library');
 
 		for (folder in unfilteredLibrary)
@@ -71,7 +72,6 @@ class CoolUtil
 			if (!folder.contains('.'))
 				libraryArray.push(folder);
 		}
-		trace(libraryArray);
 		#end
 
 		return libraryArray;

@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.system.FlxSound;
 import meta.data.*;
+import meta.state.PlayState;
 import openfl.utils.Assets;
 import sys.FileSystem;
 
@@ -23,7 +24,7 @@ class ForeverTools
 			if (resetVolume)
 				FlxG.sound.music.fadeIn(4, 0, 0.7);
 			// placeholder bpm
-			Conductor.changeBPM(102);
+			Conductor.changeBPM(96);
 		}
 		//
 	}
@@ -51,5 +52,25 @@ class ForeverTools
 			songsArray[i].stop();
 			songsArray[i].destroy();
 		}
+	}
+
+	public static function createSaveData()
+	{
+		Highscore.songScores.clear();
+		FlxG.save.data.skipable = false;
+		FlxG.save.data.spat = 0;
+		FlxG.save.data.achievement1 = false;
+		FlxG.save.data.achievement2 = false;
+		FlxG.save.data.achievement3 = false;
+		FlxG.save.data.achievement4 = false;
+		FlxG.save.data.achievement5 = false;
+		FlxG.save.data.achievement6 = false;
+		FlxG.save.data.achievement7 = false;
+		FlxG.save.data.storyComplete = false;
+		FlxG.save.data.drinkComplete = false;
+		FlxG.save.data.doodleComplete = false;
+		FlxG.save.data.neptuneComplete = false;
+		FlxG.save.data.pimpbobComplete = false;
+		FlxG.save.data.squidComplete = false;
 	}
 }

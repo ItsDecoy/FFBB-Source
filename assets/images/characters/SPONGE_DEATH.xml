@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bf death.png">
+<SubTexture name="bf death deathWait0000" x="0" y="0" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0000" x="388" y="0" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0001" x="388" y="0" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0002" x="776" y="0" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0003" x="776" y="0" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0004" x="0" y="319" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0005" x="0" y="319" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0006" x="388" y="319" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0007" x="388" y="319" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0008" x="776" y="319" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0009" x="776" y="319" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0010" x="776" y="319" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0011" x="776" y="319" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0012" x="0" y="638" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0013" x="0" y="638" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0014" x="388" y="638" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death death0015" x="388" y="638" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death deathLoop0000" x="776" y="638" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death retry0000" x="0" y="957" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death retry0001" x="0" y="957" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death retry0002" x="388" y="957" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death retry0003" x="388" y="957" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death retry0004" x="776" y="957" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+<SubTexture name="bf death retry0005" x="776" y="957" width="388" height="319" frameX="0" frameY="0" frameWidth="388" frameHeight="319" />
+</TextureAtlas>

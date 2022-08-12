@@ -4,6 +4,7 @@ import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.effects.FlxFlicker;
+import flixel.effects.particles.FlxEmitter;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
@@ -13,7 +14,6 @@ import gameObjects.userInterface.menu.Selector;
 import meta.MusicBeat.MusicBeatState;
 import meta.data.dependency.Discord;
 import meta.data.dependency.FNFSprite;
-import meta.data.font.Alphabet;
 import meta.subState.OptionsSubstate;
 
 /**
@@ -22,12 +22,13 @@ import meta.subState.OptionsSubstate;
 class OptionsMenuState extends MusicBeatState
 {
 	private var categoryMap:Map<String, Dynamic>;
-	private var activeSubgroup:FlxTypedGroup<Alphabet>;
+	private var activeSubgroup:FlxTypedGroup<FlxText>;
 	private var attachments:FlxTypedGroup<FlxBasic>;
 
 	var curSelection = 0;
 	var curSelectedScript:Void->Void;
 	var curCategory:String;
+	var bubbles:FlxTypedGroup<FlxEmitter>;
 
 	var lockedMovement:Bool = false;
 
@@ -45,67 +46,43 @@ class OptionsMenuState extends MusicBeatState
 
 		// NOTE : Make sure to check Init.hx if you are trying to add options.
 
-		#if DISCORD_RPC
-		Discord.changePresence('OPTIONS MENU', 'Main Menu');
+		#if !html5
+		Discord.changePresence('Changing Options', 'Option Menu', " ", TitleState.titleImage);
 		#end
 
 		categoryMap = [
 			'main' => [
 				[
-					['preferences', callNewGroup],
-					['appearance', callNewGroup],
-					['controls', openControlmenu],
-					['exit', exitMenu]
+					['Gameplay', callNewGroup],
+					['Accessibility', callNewGroup],
+					['Controls', openControlmenu],
+					['Exit', exitMenu]
 				]
 			],
-			'preferences' => [
+			'Gameplay' => [
 				[
-					['Gameplay Settings', null],
+					['Game Settings', null],
 					['', null],
-					['Controller Mode', getFromOption],
 					['Downscroll', getFromOption],
 					['Centered Notefield', getFromOption],
-					['Ghost Tapping', getFromOption],
-					['', null],
-					['Text Settings', null],
-					['', null],
-					['Display Accuracy', getFromOption],
-					['Skip Text', getFromOption],
-					['', null],
-					['Meta Settings', null],
-					['', null],
-					['Auto Pause', getFromOption],
-					#if !neko ["Framerate Cap", getFromOption], #end
+					['Timer Bar', getFromOption],
+					['Disable Antialiasing', getFromOption],
+					['Disable Miss Sounds', getFromOption],
+					['Disable Death Lines', getFromOption],
 					['FPS Counter', getFromOption],
 					['Memory Counter', getFromOption],
-					#if !neko ['Debug Info', getFromOption], #end
+					//['Debug Info', getFromOption],
 				]
 			],
-			'appearance' => [
+			'Accessibility' => [
 				[
-					['Judgements', null],
-					['', null],
-					["UI Skin", getFromOption],
-					['Fixed Judgements', getFromOption],
-					['Simply Judgements', getFromOption],
-					['Counter', getFromOption],
-					['', null],
-					['Notes', null],
-					['', null],
-					["Note Skin", getFromOption],
-					["Clip Style", getFromOption],
-					['No Camera Note Movement', getFromOption],
-					['Disable Note Splashes', getFromOption],
-					['Opaque Arrows', getFromOption],
-					['Opaque Holds', getFromOption],
-					['', null],
 					['Accessibility Settings', null],
 					['', null],
 					['Filter', getFromOption],
-					['Disable Antialiasing', getFromOption],
 					["Stage Opacity", getFromOption],
-					["Opacity Type", getFromOption],
 					['Reduced Movements', getFromOption],
+					['No Camera Note Movement', getFromOption],
+					['Disable Flashing Lights', getFromOption]
 				]
 			]
 		];
@@ -118,26 +95,44 @@ class OptionsMenuState extends MusicBeatState
 
 		// call the options menu
 		var bg = new FlxSprite(-85);
-		bg.loadGraphic(Paths.image('menus/base/menuDesat'));
+		bg.loadGraphic(Paths.image('menus/base/options/Pipes'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.18;
-		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();
 		bg.screenCenter();
-		bg.color = 0xCE64DF;
 		bg.antialiasing = true;
 		add(bg);
 
-		infoText = new FlxText(5, FlxG.height - 24, 0, "", 32);
-		infoText.setFormat("VCR OSD Mono", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		bubbles = new FlxTypedGroup<FlxEmitter>();
+
+		for (i in 0...5)
+		{
+			var bubbleRise:FlxEmitter = new FlxEmitter(-1000, 850);
+			bubbleRise.launchMode = FlxEmitterMode.SQUARE;
+			bubbleRise.velocity.set(-50, -150, 50, -550, -100, 0, 100, -100);
+			bubbleRise.scale.set(0.6, 0.6, 1.2, 1, 0.6, 0.6, 0.9, 0.8);
+			bubbleRise.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+			bubbleRise.width = 4000;
+			bubbleRise.alpha.set(1, 1, 0, 0);
+			bubbleRise.lifespan.set(3, 5);
+			bubbleRise.loadParticles(Paths.image('particles/BubbleHit' + i), 500, 16, true);
+
+			bubbleRise.start(false, FlxG.random.float(0.35, 0.4), 1000000);
+			bubbles.add(bubbleRise);
+		}
+		add(bubbles);
+
+		infoText = new FlxText(5, FlxG.height - 29, 0, "", 32);
+		infoText.setFormat(Paths.font("sponge.otf"), 18, FlxColor.YELLOW, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		infoText.textField.background = true;
 		infoText.textField.backgroundColor = FlxColor.BLACK;
+		infoText.antialiasing = true;
 		add(infoText);
 
 		loadSubgroup('main');
 	}
 
-	private var currentAttachmentMap:Map<Alphabet, Dynamic>;
+	private var currentAttachmentMap:Map<FlxText, Dynamic>;
 
 	function loadSubgroup(subgroupName:String)
 	{
@@ -203,14 +198,10 @@ class OptionsMenuState extends MusicBeatState
 			activeSubgroup.members[i].alpha = 0.6;
 			if (currentAttachmentMap != null)
 				setAttachmentAlpha(currentAttachmentMap.get(activeSubgroup.members[i]), 0.6);
-			activeSubgroup.members[i].targetY = (i - curSelection) / 2;
-			activeSubgroup.members[i].xTo = 200 + ((i - curSelection) * 25);
 
 			// check for null members and hardcode the dividers
-			if (categoryMap.get(curCategory)[0][i][1] == null)
-			{
+			if (categoryMap.get(curCategory)[0][i][1] == null) {
 				activeSubgroup.members[i].alpha = 1;
-				activeSubgroup.members[i].xTo += Std.int((FlxG.width / 2) - ((activeSubgroup.members[i].text.length / 2) * 40)) - 200;
 			}
 		}
 
@@ -306,7 +297,7 @@ class OptionsMenuState extends MusicBeatState
 			if (curCategory != 'main')
 				loadSubgroup('main');
 			else
-				Main.switchState(this, new MainMenuState());
+				Main.switchState(this, new TitleState());
 		}
 	}
 
@@ -320,10 +311,10 @@ class OptionsMenuState extends MusicBeatState
 
 	function updateSelections()
 	{
-		var up = controls.UI_UP;
-		var down = controls.UI_DOWN;
-		var up_p = controls.UI_UP_P;
-		var down_p = controls.UI_DOWN_P;
+		var up = controls.UP;
+		var down = controls.DOWN;
+		var up_p = controls.UP_P;
+		var down_p = controls.DOWN_P;
 		var controlArray:Array<Bool> = [up, down, up_p, down_p];
 
 		if (controlArray.contains(true))
@@ -349,25 +340,42 @@ class OptionsMenuState extends MusicBeatState
 		}
 	}
 
-	private function returnSubgroup(groupName:String):FlxTypedGroup<Alphabet>
+	private function returnSubgroup(groupName:String):FlxTypedGroup<FlxText>
 	{
 		//
-		var newGroup:FlxTypedGroup<Alphabet> = new FlxTypedGroup<Alphabet>();
+		var newGroup:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
 		for (i in 0...categoryMap.get(groupName)[0].length)
 		{
 			if (Init.gameSettings.get(categoryMap.get(groupName)[0][i][0]) == null
 				|| Init.gameSettings.get(categoryMap.get(groupName)[0][i][0])[3] != Init.FORCED)
 			{
-				var thisOption:Alphabet = new Alphabet(0, 0, categoryMap.get(groupName)[0][i][0], true, false);
-				thisOption.screenCenter();
-				thisOption.y += (90 * (i - Math.floor(categoryMap.get(groupName)[0].length / 2)));
-				thisOption.targetY = i;
-				thisOption.disableX = true;
+				var thisOption:FlxText = new FlxText(450, 145, 0, categoryMap.get(groupName)[0][i][0], 50);
+				if (groupName == 'main')
+				{
+					thisOption.setFormat(Paths.font("sponge.otf"), 70, FlxColor.YELLOW, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+					thisOption.screenCenter(X);
+				}
+				else
+				{
+					thisOption.setFormat(Paths.font("sponge.otf"), 40, FlxColor.YELLOW, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+					thisOption.y = 0;
+					if ((categoryMap.get(groupName)[0][i][1]) == null)
+					{
+						thisOption.setFormat(Paths.font("sponge.otf"), 70, FlxColor.YELLOW, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+						thisOption.screenCenter(X);
+						thisOption.y += 30;
+					}
+				}
 				// hardcoded main so it doesnt have scroll
-				if (groupName != 'main')
-					thisOption.isMenuItem = true;
+				if (groupName == 'main')
+					thisOption.y += (110 * i);
+				else if (groupName == 'Gameplay')
+					thisOption.y += (70 * i);
+				else if (groupName == 'Accessibility')
+					thisOption.y += (95 * i);
 				thisOption.alpha = 0.6;
+				thisOption.antialiasing = true;
 				newGroup.add(thisOption);
 			}
 		}
@@ -375,9 +383,9 @@ class OptionsMenuState extends MusicBeatState
 		return newGroup;
 	}
 
-	private function returnExtrasMap(alphabetGroup:FlxTypedGroup<Alphabet>):Map<Alphabet, Dynamic>
+	private function returnExtrasMap(alphabetGroup:FlxTypedGroup<FlxText>):Map<FlxText, Dynamic>
 	{
-		var extrasMap:Map<Alphabet, Dynamic> = new Map<Alphabet, Dynamic>();
+		var extrasMap:Map<FlxText, Dynamic> = new Map<FlxText, Dynamic>();
 		for (letter in alphabetGroup)
 		{
 			if (Init.gameSettings.get(letter.text) != null)
@@ -386,14 +394,14 @@ class OptionsMenuState extends MusicBeatState
 				{
 					case Init.SettingTypes.Checkmark:
 						// checkmark
-						var checkmark = ForeverAssets.generateCheckmark(10, letter.y, 'checkboxThingie', 'base', 'default', 'UI');
+						var checkmark = ForeverAssets.generateCheckmark(10, letter.y, 'bubblesCheckbox', 'base', 'default', 'UI');
 						checkmark.playAnim(Std.string(Init.trueSettings.get(letter.text)) + ' finished');
 
 						extrasMap.set(letter, checkmark);
 					case Init.SettingTypes.Selector:
 						// selector
 						var selector:Selector = new Selector(10, letter.y, letter.text, Init.gameSettings.get(letter.text)[4],
-							(letter.text == 'Framerate Cap') ? true : false, (letter.text == 'Stage Opacity') ? true : false);
+							(letter.text == 'Stage Opacity') ? true : false);
 
 						extrasMap.set(letter, selector);
 					default:
@@ -438,14 +446,14 @@ class OptionsMenuState extends MusicBeatState
 					#if !html5
 					var selector:Selector = currentAttachmentMap.get(activeSubgroup.members[curSelection]);
 
-					if (!controls.UI_LEFT)
+					if (!controls.LEFT)
 						selector.selectorPlay('left');
-					if (!controls.UI_RIGHT)
+					if (!controls.RIGHT)
 						selector.selectorPlay('right');
 
-					if (controls.UI_RIGHT_P)
+					if (controls.RIGHT_P)
 						updateSelector(selector, 1);
-					else if (controls.UI_LEFT_P)
+					else if (controls.LEFT_P)
 						updateSelector(selector, -1);
 					#end
 				default:
@@ -454,42 +462,15 @@ class OptionsMenuState extends MusicBeatState
 		}
 	}
 
-	function updateCheckmark(checkmark:FNFSprite, animation:Bool)
-	{
+	function updateCheckmark(checkmark:FNFSprite, animation:Bool) {
 		if (checkmark != null)
 			checkmark.playAnim(Std.string(animation));
 	}
 
 	function updateSelector(selector:Selector, updateBy:Int)
 	{
-		var fps = selector.fpsCap;
 		var bgdark = selector.darkBG;
-		if (fps)
-		{
-			// bro I dont even know if the engine works in html5 why am I even doing this
-			// lazily hardcoded fps cap
-			var originalFPS = Init.trueSettings.get(activeSubgroup.members[curSelection].text);
-			var increase = 15 * updateBy;
-			if (originalFPS + increase < 30)
-				increase = 0;
-			// high fps cap
-			if (originalFPS + increase > 360)
-				increase = 0;
-
-			if (updateBy == -1)
-				selector.selectorPlay('left', 'press');
-			else
-				selector.selectorPlay('right', 'press');
-
-			FlxG.sound.play(Paths.sound('scrollMenu'));
-
-			originalFPS += increase;
-			selector.chosenOptionString = Std.string(originalFPS);
-			selector.optionChosen.text = Std.string(originalFPS);
-			Init.trueSettings.set(activeSubgroup.members[curSelection].text, originalFPS);
-			Init.saveSettings();
-		}
-		else if (bgdark)
+		if (bgdark)
 		{
 			// lazily hardcoded darkness cap
 			var originaldark = Init.trueSettings.get(activeSubgroup.members[curSelection].text);
@@ -513,19 +494,18 @@ class OptionsMenuState extends MusicBeatState
 			Init.trueSettings.set(activeSubgroup.members[curSelection].text, originaldark);
 			Init.saveSettings();
 		}
-		else if (!fps && !bgdark)
-		{
+		else
+		{ 
 			// get the current option as a number
 			var storedNumber:Int = 0;
 			var newSelection:Int = storedNumber;
-			if (selector.options != null)
-			{
+			if (selector.options != null) {
 				for (curOption in 0...selector.options.length)
 				{
 					if (selector.options[curOption] == selector.optionChosen.text)
 						storedNumber = curOption;
 				}
-
+				
 				newSelection = storedNumber + updateBy;
 				if (newSelection < 0)
 					newSelection = selector.options.length - 1;
@@ -584,7 +564,7 @@ class OptionsMenuState extends MusicBeatState
 			lockedMovement = true;
 			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
 			{
-				Main.switchState(this, new MainMenuState());
+				Main.switchState(this, new TitleState());
 				lockedMovement = false;
 			});
 		}

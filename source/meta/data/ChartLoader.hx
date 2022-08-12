@@ -32,13 +32,12 @@ class ChartLoader
 				// load fnf style charts (PRE 2.8)
 				var daBeats:Int = 0; // Not exactly representative of 'daBeats' lol, just how much it has looped
 
-				for (section in noteData)
-				{
+				for (section in noteData) {
 					var coolSection:Int = Std.int(section.lengthInSteps / 4);
 
 					for (songNotes in section.sectionNotes)
 					{
-						var daStrumTime:Float = #if !neko songNotes[0] - Init.trueSettings['Offset'] /* - | late, + | early */ #else songNotes[0] #end;
+						var daStrumTime:Float = songNotes[0] - Init.trueSettings['Offset']; // - | late, + | early
 						var daNoteData:Int = Std.int(songNotes[1] % 4);
 						// define the note's animation (in accordance to the original game)!
 						var daNoteAlt:Float = 0;

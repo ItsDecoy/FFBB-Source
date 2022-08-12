@@ -5,8 +5,9 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxSpriteGroup;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
 import meta.data.dependency.FNFSprite;
-import meta.data.font.Alphabet;
 
 class Selector extends FlxTypedSpriteGroup<FlxSprite>
 {
@@ -14,27 +15,26 @@ class Selector extends FlxTypedSpriteGroup<FlxSprite>
 	var leftSelector:FNFSprite;
 	var rightSelector:FNFSprite;
 
-	public var optionChosen:Alphabet;
+	public var optionChosen:FlxText;
 	public var chosenOptionString:String = '';
 	public var options:Array<String>;
 
 	public var fpsCap:Bool = false;
 	public var darkBG:Bool = false;
 
-	public function new(x:Float = 0, y:Float = 0, word:String, options:Array<String>, fpsCap:Bool = false, darkBG:Bool = false)
+	public function new(x:Float = 0, y:Float = 0, word:String, options:Array<String>, darkBG:Bool = false)
 	{
 		// call back the function
 		super(x, y);
 
 		this.options = options;
-		trace(options);
+		//trace(options);
 
 		// oops magic numbers
-		var shiftX = 48;
-		var shiftY = 35;
+		var shiftX = 38;
+		var shiftY = 43;
 		// generate multiple pieces
 
-		this.fpsCap = fpsCap;
 		this.darkBG = darkBG;
 
 		#if html5
@@ -45,21 +45,25 @@ class Selector extends FlxTypedSpriteGroup<FlxSprite>
 		lock.animation.play('lock');
 		add(lock);
 		#else
-		leftSelector = createSelector(shiftX, shiftY, word, 'left');
-		rightSelector = createSelector(shiftX + ((word.length) * 50) + (shiftX / 4) + ((fpsCap) ? 20 : 0), shiftY, word, 'right');
+		leftSelector = createSelector(shiftX, shiftY - 4, word, 'left');
+		rightSelector = createSelector(shiftX + ((word.length) * ((word == 'Stage Opacity') ? 28.95 : 29)) + (shiftX / 4),
+			((word == 'Stage Opacity') ? shiftY + 3 : shiftY), word, 'right');
 
 		add(leftSelector);
 		add(rightSelector);
 		#end
 
 		chosenOptionString = Init.trueSettings.get(word);
-		if (fpsCap || darkBG)
+		if (darkBG)
 		{
 			chosenOptionString = Std.string(Init.trueSettings.get(word));
-			optionChosen = new Alphabet(FlxG.width / 2 + 200, shiftY + 20, chosenOptionString, false, false);
+			optionChosen = new FlxText(FlxG.width / 2 - 149.5, shiftY + 7, 0, chosenOptionString);
 		}
 		else
-			optionChosen = new Alphabet(FlxG.width / 2, shiftY + 20, chosenOptionString, true, false);
+			optionChosen = new FlxText(FlxG.width / 2 - 350, shiftY + 7, 0, chosenOptionString);
+
+		optionChosen.setFormat(Paths.font("sponge.ttf"), 50, FlxColor.YELLOW, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		optionChosen.antialiasing = true;
 
 		add(optionChosen);
 	}
@@ -67,12 +71,12 @@ class Selector extends FlxTypedSpriteGroup<FlxSprite>
 	public function createSelector(objectX:Float = 0, objectY:Float = 0, word:String, dir:String):FNFSprite
 	{
 		var returnSelector = new FNFSprite(objectX, objectY);
-		returnSelector.frames = Paths.getSparrowAtlas('menus/base/storymenu/campaign_menu_UI_assets');
+		returnSelector.frames = Paths.getSparrowAtlas('UI/default/base/selectorArrows');
 
 		returnSelector.animation.addByPrefix('idle', 'arrow $dir', 24, false);
 		returnSelector.animation.addByPrefix('press', 'arrow push $dir', 24, false);
-		returnSelector.addOffset('press', 0, -10);
 		returnSelector.playAnim('idle');
+		returnSelector.setGraphicSize(Std.int(returnSelector.width * 0.75));
 
 		return returnSelector;
 	}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="MermaidGF.png">
+	<!-- Created with Adobe Animate version 21.0.5.40714 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="MermaidGF0000" x="0" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0001" x="703" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0002" x="1406" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0003" x="2109" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0004" x="2812" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0005" x="3515" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0006" x="4218" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0007" x="4921" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0008" x="4921" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0009" x="4921" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0010" x="5624" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0011" x="5624" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0012" x="5624" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0013" x="6327" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0014" x="6327" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0015" x="7030" y="0" width="703" height="749"/>
+	<SubTexture name="MermaidGF0016" x="0" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0017" x="703" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0018" x="1406" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0019" x="2109" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0020" x="2812" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0021" x="3515" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0022" x="4218" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0023" x="4218" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0024" x="4218" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0025" x="4921" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0026" x="4921" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0027" x="4921" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0028" x="5624" y="749" width="703" height="749"/>
+	<SubTexture name="MermaidGF0029" x="5624" y="749" width="703" height="749"/>
+</TextureAtlas>

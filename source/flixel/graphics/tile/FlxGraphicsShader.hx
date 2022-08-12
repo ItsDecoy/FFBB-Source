@@ -12,10 +12,11 @@ class FlxGraphicsShader extends GraphicsShader
 	public var colorOffset:ShaderParameter<Float>;
 	public var hasTransform:ShaderParameter<Bool>;
 	public var hasColorTransform:ShaderParameter<Bool>;
-
+	
 	public function new()
 	{
-		super( // Vertex
+		super(
+			// Vertex
 			"#pragma header
 			
 			attribute float alpha;
@@ -34,15 +35,15 @@ class FlxGraphicsShader extends GraphicsShader
 					openfl_ColorOffsetv = colorOffset / 255.0;
 					openfl_ColorMultiplierv = colorMultiplier;
 				}
-			}", // Fragment
-
+			}",
+			// Fragment
 			"#pragma header
 			
 			void main(void)
 			{
 				gl_FragColor = flixel_texture2D(bitmap, openfl_TextureCoordv);
 			}", false);
-
+		
 		glFragmentHeader += "uniform bool hasTransform;
 		uniform bool hasColorTransform;
 
@@ -80,7 +81,7 @@ class FlxGraphicsShader extends GraphicsShader
 			}
 			return vec4(0.0, 0.0, 0.0, 0.0);
 		}";
-
+		
 		__initGL();
 
 		bitmap = data.bitmap;
@@ -90,15 +91,16 @@ class FlxGraphicsShader extends GraphicsShader
 		hasTransform = data.hasTransform;
 		hasColorTransform = data.hasColorTransform;
 	}
+
 	/* override function __initGL()
-		{
-			super.__initGL();
-			
-			alpha = new ShaderParameter<Float>();
-			colorMultiplier = new ShaderParameter<Float>();
-			colorOffset = new ShaderParameter<Float>();
-			hasTransform = new ShaderParameter<Bool>();
-			hasColorTransform = new ShaderParameter<Bool>();
-	}*/
+	{
+		super.__initGL();
+		
+		alpha = new ShaderParameter<Float>();
+		colorMultiplier = new ShaderParameter<Float>();
+		colorOffset = new ShaderParameter<Float>();
+		hasTransform = new ShaderParameter<Bool>();
+		hasColorTransform = new ShaderParameter<Bool>();
+	} */
 }
 #end

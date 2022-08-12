@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bf death.png">
+<SubTexture name="bf death death0000" x="0" y="0" width="473" height="706" frameX="0" frameY="0" frameWidth="473" frameHeight="706" />
+<SubTexture name="bf death deathloop0000" x="0" y="0" width="473" height="706" frameX="0" frameY="0" frameWidth="473" frameHeight="706" />
+<SubTexture name="bf death retry0000" x="0" y="0" width="473" height="706" frameX="0" frameY="0" frameWidth="473" frameHeight="706" />
+</TextureAtlas>

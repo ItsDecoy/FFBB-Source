@@ -31,6 +31,39 @@ import sys.io.Process;
 // at least that's how I think it works. I could be stupid!
 class Main extends Sprite
 {
+	/*
+		This is the main class of the project, it basically connects everything together.
+		If you know what you're doing, go ahead and shoot! if you're looking for something more specific, however,
+		try accessing some game objects or meta files, meta files control the information (say what's playing on screen)
+		and game objects are like the boyfriend, girlfriend and the oppontent. 
+
+		Thanks for using my little modular engine project! I really appreciate it. 
+		If you've got any suggestions let me know at Shubs#0404 on discord or create a ticket on the github.
+
+		To run through the basics, I've essentially created a rewrite of Friday Night Funkin that is supposed to be
+		more modular for mod devs to use if they want to, as well as to give mod devs a couple legs up in terms of
+		things like organisation and such, since I haven't really seen any engines that are organised like this.
+		also, playstate was getting real crowded so I did a me and decided to rewrite everything instead of just
+		fixing the problems with FNF :P
+
+		yeah this is a problem I have
+		it has to be perfect or else it isn't presentable
+
+		I'm sure I'll write this down in the github, but this is an open source Friday Night Funkin' Modding engine
+		which is completely open for anyone to modify. I have a couple of requests and prerequisites however, and that is
+		that you, number one, in no way claim this engine as your own. If you're going to make an open source modification to the engine
+		you should run a pull request or fork and not create a new standalone repo for it. If you're actually going to mod the game however,
+		please, by all means, create your own repository for it instead as it would be your project then. I also request the engine is credited
+		somewhere in the project. (in the gamebanana page, wherever you'd like/is most convenient for you!)
+		if you don't wanna credit me that's fine, I just ask for the project to be in the credits somewhere 
+		I do ask that you credit me if you make an actual modification to the engine or something like that, basically what I said above
+
+		I have no idea how licenses work so pretend I'm professional or something AAAA
+		thank you for using this engine it means a lot to me :)
+
+		if you have any questions like I said, shoot me a message or something, I'm totally cool with it even if it's just help with programming or something
+		>	fair warning I'm not a very good programmer
+	 */
 	// class action variables
 	public static var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	public static var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
@@ -38,11 +71,11 @@ class Main extends Sprite
 	public static var mainClassState:Class<FlxState> = Init; // Determine the main class state of the game
 	public static var framerate:Int = 120; // How many frames per second the game should run at.
 
-	public static var gameVersion:String = '0.3.1';
+	public static var gameVersion:String = '0.3';
 
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
-	var infoCounter:Overlay; // initialize the heads up display that shows information before creating it.
+	var infoCounter:InfoHud; // initialize the heads up display that shows information before creating it.
 
 	// heres gameweeks set up!
 
@@ -54,42 +87,13 @@ class Main extends Sprite
 		[ [songs to use], [characters in songs], [color of week], name of week ]
 	**/
 	public static var gameWeeks:Array<Dynamic> = [
-		[['Tutorial'], ['gf'], [FlxColor.fromRGB(129, 100, 223)], 'Funky Beginnings'],
+		[['on-ice'], ['fsh'], [FlxColor.YELLOW], 'Wheres My Drink'],
+		[['nuts-and-bolts'], ['sandy'], [FlxColor.RED], 'Robot Shaped Like A Squirrel'],
 		[
-			['Bopeebo', 'Fresh', 'Dadbattle'],
-			['dad', 'dad', 'dad'],
-			[FlxColor.fromRGB(129, 100, 223)],
-			'vs. DADDY DEAREST'
-		],
-		[
-			['Spookeez', 'South', 'Monster'],
-			['spooky', 'spooky', 'monster'],
-			[FlxColor.fromRGB(30, 45, 60)],
-			'Spooky Month'
-		],
-		[
-			['Pico', 'Philly-Nice', 'Blammed'],
-			['pico'],
-			[FlxColor.fromRGB(111, 19, 60)],
-			'vs. Pico'
-		],
-		[
-			['Satin-Panties', 'High', 'Milf'],
-			['mom'],
-			[FlxColor.fromRGB(203, 113, 170)],
-			'MOMMY MUST MURDER'
-		],
-		[
-			['Cocoa', 'Eggnog', 'Winter-Horrorland'],
-			['parents-christmas', 'parents-christmas', 'monster-christmas'],
-			[FlxColor.fromRGB(141, 165, 206)],
-			'RED SNOW'
-		],
-		[
-			['Senpai', 'Roses', 'Thorns'],
-			['senpai', 'senpai', 'spirit'],
-			[FlxColor.fromRGB(206, 106, 169)],
-			"hating simulator ft. moawling"
+			['doodle-duel', 'plan-z', 'pimpin', 'scrapped-metal'],
+			['doodlebob', 'neptune', 'pimpbob', 'squid'],
+			[FlxColor.GREEN],
+			'Freeplay'
 		],
 	];
 
@@ -115,7 +119,7 @@ class Main extends Sprite
 
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 
-		#if (html5 || neko)
+		#if html5
 		framerate = 60;
 		#end
 
@@ -138,7 +142,7 @@ class Main extends Sprite
 		}
 
 		FlxTransitionableState.skipNextTransIn = true;
-
+		
 		// here we set up the base game
 		var gameCreate:FlxGame;
 		gameCreate = new FlxGame(gameWidth, gameHeight, mainClassState, zoom, framerate, framerate, skipSplash);
@@ -148,7 +152,7 @@ class Main extends Sprite
 		// addChild(new FPS(10, 3, 0xFFFFFF));
 
 		// begin the discord rich presence
-		#if DISCORD_RPC
+		#if !html5
 		Discord.initializeRPC();
 		Discord.changePresence('');
 		#end
@@ -156,7 +160,10 @@ class Main extends Sprite
 		// test initialising the player settings
 		PlayerSettings.init();
 
-		infoCounter = new Overlay(0, 0);
+		// if you're reading this in the future I've added my own FPS counter below! hopefully...
+		// yeah dw I'm getting started on it fffff
+
+		infoCounter = new InfoHud(10, 3, 0xFFFFFF, true);
 		addChild(infoCounter);
 	}
 
@@ -174,18 +181,17 @@ class Main extends Sprite
 	{
 		// Custom made Trans in
 		mainClassState = Type.getClass(target);
-		if (!FlxTransitionableState.skipNextTransIn)
+		/*if (!FlxTransitionableState.skipNextTransIn)
 		{
 			curState.openSubState(new FNFTransition(0.35, false));
-			FNFTransition.finishCallback = function()
-			{
+			FNFTransition.finishCallback = function() {
 				FlxG.switchState(target);
 			};
 			return trace('changed state');
 		}
-		FlxTransitionableState.skipNextTransIn = false;
+		FlxTransitionableState.skipNextTransIn = false;*/
 		// load the state
-		FlxG.switchState(target);
+		FlxG.switchState(target);		
 	}
 
 	public static function updateFramerate(newFramerate:Int)
@@ -213,7 +219,7 @@ class Main extends Sprite
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		path = "crash/" + "FE_" + dateNow + ".txt";
+		path = "./crash/" + "FE_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -228,8 +234,8 @@ class Main extends Sprite
 
 		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/Yoshubs/Forever-Engine";
 
-		if (!FileSystem.exists("crash/"))
-			FileSystem.createDirectory("crash/");
+		if (!FileSystem.exists("./crash/"))
+			FileSystem.createDirectory("./crash/");
 
 		File.saveContent(path, errMsg + "\n");
 
@@ -242,9 +248,13 @@ class Main extends Sprite
 		crashDialoguePath += ".exe";
 		#end
 
-		if (FileSystem.exists(crashDialoguePath))
+		if (FileSystem.exists("./" + crashDialoguePath))
 		{
 			Sys.println("Found crash dialog: " + crashDialoguePath);
+
+			#if linux
+			crashDialoguePath = "./" + crashDialoguePath;
+			#end
 			new Process(crashDialoguePath, [path]);
 		}
 		else

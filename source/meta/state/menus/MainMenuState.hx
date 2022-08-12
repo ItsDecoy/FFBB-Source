@@ -5,12 +5,14 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
+import flixel.effects.particles.FlxEmitter;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
 import meta.MusicBeat.MusicBeatState;
 import meta.data.dependency.Discord;
 
@@ -29,8 +31,12 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'options', 'credits'];
 	var canSnap:Array<Float> = [];
+
+	var particles:FlxTypedGroup<FlxEmitter>;
+	var bubbleRise:FlxEmitter;
+	var transitionBG:FlxSprite;
 
 	// the create 'state'
 	override function create()
@@ -44,16 +50,16 @@ class MainMenuState extends MusicBeatState
 		// make sure the music is playing
 		ForeverTools.resetMenuMusic();
 
-		#if DISCORD_RPC
-		Discord.changePresence('MENU SCREEN', 'Main Menu');
+		#if !html5
+		Discord.changePresence('Menu Screen', 'Main Menu', " ", TitleState.titleImage);
 		#end
 
 		// uh
 		persistentUpdate = persistentDraw = true;
 
 		// background
-		bg = new FlxSprite(-85);
-		bg.loadGraphic(Paths.image('menus/base/menuBG'));
+		bg = new FlxSprite(-95);
+		bg.loadGraphic(Paths.image('menus/base/rosterArt'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.18;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
@@ -81,18 +87,13 @@ class MainMenuState extends MusicBeatState
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
-		// create the menu items themselves
-		var tex = Paths.getSparrowAtlas('menus/base/title/FNF_main_menu_assets');
-
 		// loop through the menu options
 		for (i in 0...optionShit.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite(0, 80 + (i * 200));
-			menuItem.frames = tex;
-			// add the animations in a cool way (real
-			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
-			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
-			menuItem.animation.play('idle');
+			var menuItem:FlxSprite = new FlxSprite(0, 50 + (i * 150));
+			menuItem.loadGraphic(Paths.image('menus/base/menuSelection'), true, 906, 294);
+			menuItem.animation.frameIndex = i;
+			menuItem.setGraphicSize(Std.int(menuItem.width * 0.6));
 			canSnap[i] = -1;
 			// set the id
 			menuItem.ID = i;
@@ -112,8 +113,8 @@ class MainMenuState extends MusicBeatState
 			menuItem.antialiasing = true;
 			menuItem.updateHitbox();
 
-			/*
-				FlxTween.tween(menuItem, {alpha: 1, x: ((FlxG.width / 2) - (menuItem.width / 2))}, 0.35, {
+			
+				/*FlxTween.tween(menuItem, {alpha: 1, x: ((FlxG.width / 2) - (menuItem.width / 2))}, 0.35, {
 					ease: FlxEase.smootherStepInOut,
 					onComplete: function(tween:FlxTween)
 					{
@@ -136,6 +137,30 @@ class MainMenuState extends MusicBeatState
 		add(versionShit);
 
 		//
+
+		transitionBG = new FlxSprite(-85).loadGraphic(Paths.image('menus/base/transition/bgClouds'));
+		transitionBG.setGraphicSize(Std.int(transitionBG.width * 2));
+		transitionBG.visible = false;
+		transitionBG.antialiasing = true;
+		transitionBG.scrollFactor.set();
+		transitionBG.updateHitbox();
+		transitionBG.screenCenter();
+		add(transitionBG);
+
+		bubbleRise = new FlxEmitter(-1000, 900);
+		bubbleRise.launchMode = FlxEmitterMode.SQUARE;
+		bubbleRise.velocity.set(-450, -650, 350, -850, -700, 400, 300, -400);
+		bubbleRise.scale.set(0.7, 0.7, 0.8, 0.8, 0.7, 0.7, 1, 1);
+		bubbleRise.drag.set(0, 0, 0, 0, 5, 5, 10, 10);
+		bubbleRise.width = 3500;
+		bubbleRise.alpha.set(1, 1, 0, 0);
+		bubbleRise.lifespan.set(3, 5);
+		bubbleRise.loadParticles(Paths.image('particles/BubbleTransition'), 500, 16, true);
+		bubbleRise.start(false, FlxG.random.float(0.08, 0.01), 1000000);
+
+		FlxG.mouse.visible = false;
+		FlxG.mouse.enabled = false;
+		FlxG.mouse.useSystemCursor = false;
 	}
 
 	// var colorTest:Float = 0;
@@ -207,6 +232,15 @@ class MainMenuState extends MusicBeatState
 			counterControl = 0;
 		}
 
+		if (FlxG.keys.justPressed.SEVEN)
+			Main.switchState(this, new CreditState());
+
+		if (FlxG.keys.justPressed.SIX)
+			Main.switchState(this, new AchievementsState());
+
+		if (controls.BACK)
+			Main.switchState(this, new TitleState());
+
 		if ((controls.ACCEPT) && (!selectedSomethin))
 		{
 			//
@@ -243,6 +277,8 @@ class MainMenuState extends MusicBeatState
 								transIn = FlxTransitionableState.defaultTransIn;
 								transOut = FlxTransitionableState.defaultTransOut;
 								Main.switchState(this, new OptionsMenuState());
+							case 'credits':
+								Main.switchState(this, new CreditState());
 						}
 					});
 				}
@@ -274,9 +310,6 @@ class MainMenuState extends MusicBeatState
 		// set the sprites and all of the current selection
 		camFollow.setPosition(menuItems.members[Math.floor(curSelected)].getGraphicMidpoint().x,
 			menuItems.members[Math.floor(curSelected)].getGraphicMidpoint().y);
-
-		if (menuItems.members[Math.floor(curSelected)].animation.curAnim.name == 'idle')
-			menuItems.members[Math.floor(curSelected)].animation.play('selected');
 
 		menuItems.members[Math.floor(curSelected)].updateHitbox();
 

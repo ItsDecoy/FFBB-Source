@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="robosandy.png"><SubTexture name="robosandy idle0000" x="0" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy idle0001" x="1004" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy idle0002" x="2008" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy idle0003" x="3012" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy idle0004" x="4016" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy idle0005" x="4016" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy idle0006" x="4016" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy down0000" x="5020" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy down0001" x="6024" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy down0002" x="7028" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy down0003" x="0" y="911" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy down0004" x="1004" y="911" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy up0000" x="2008" y="911" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy up0001" x="3012" y="911" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy up0002" x="4016" y="911" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy up0003" x="5020" y="911" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy up0004" x="6024" y="911" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy left0000" x="7028" y="911" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy left0001" x="0" y="1822" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy left0002" x="1004" y="1822" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy left0003" x="2008" y="1822" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy left0004" x="3012" y="1822" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy right0000" x="4016" y="1822" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy right0001" x="5020" y="1822" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy right0002" x="6024" y="1822" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy right0003" x="7028" y="1822" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy right0004" x="0" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0000" x="1004" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0001" x="1004" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0002" x="2008" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0003" x="2008" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0004" x="3012" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0005" x="3012" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0006" x="4016" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0007" x="5020" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0008" x="5020" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0009" x="6024" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0010" x="6024" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0011" x="7028" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0012" x="7028" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0013" x="0" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0014" x="0" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0015" x="0" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0016" x="7028" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0017" x="7028" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0018" x="6024" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0019" x="6024" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0020" x="7028" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0021" x="7028" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0022" x="0" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0023" x="0" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0024" x="0" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0025" x="7028" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0026" x="7028" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy taunt0027" x="6024" y="2733" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0000" x="1004" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0001" x="1004" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0002" x="2008" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0003" x="2008" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0004" x="3012" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0005" x="3012" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0006" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0007" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0008" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0009" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0010" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0011" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0012" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0013" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0014" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0015" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0016" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0017" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0018" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0019" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0020" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0021" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0022" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0023" x="5020" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0024" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0025" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0026" x="5020" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0027" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0028" x="5020" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0029" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0030" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0031" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0032" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0033" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0034" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0035" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0036" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0037" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0038" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0039" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0040" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0041" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0042" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0043" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0044" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0045" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0046" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0047" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0048" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0049" x="6024" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0050" x="5020" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0051" x="5020" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0052" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0053" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0054" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0055" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0056" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0057" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0058" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0059" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0060" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0061" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0062" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0063" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0064" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0065" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0066" x="4016" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0067" x="7028" y="3644" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0068" x="0" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0069" x="1004" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0070" x="2008" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0071" x="3012" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0072" x="4016" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0073" x="5020" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0074" x="5020" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0075" x="7028" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0076" x="7028" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0077" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0078" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0079" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0080" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0081" x="7028" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0082" x="7028" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0083" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0084" x="7028" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0085" x="7028" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0086" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0087" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0088" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0089" x="6024" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0090" x="7028" y="4555" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0091" x="0" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0092" x="1004" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0093" x="1004" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0094" x="2008" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0095" x="2008" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0096" x="2008" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0097" x="2008" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0098" x="2008" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0099" x="2008" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0100" x="1004" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0101" x="1004" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0102" x="2008" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0103" x="1004" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0104" x="1004" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy whoop0105" x="2008" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0000" x="4016" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0001" x="4016" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0002" x="4016" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0003" x="4016" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0004" x="4016" y="0" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0005" x="3012" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0006" x="3012" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0007" x="4016" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy transition0008" x="4016" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry idle0000" x="5020" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry idle0001" x="6024" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry idle0002" x="7028" y="5466" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry idle0003" x="0" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry idle0004" x="1004" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry idle0005" x="1004" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry idle0006" x="1004" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry down0000" x="2008" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry down0001" x="3012" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry down0002" x="4016" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry down0003" x="5020" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry down0004" x="5020" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry left0000" x="6024" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry left0001" x="7028" y="6377" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry left0002" x="0" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry left0003" x="1004" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry left0004" x="1004" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry right0000" x="2008" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry right0001" x="3012" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry right0002" x="4016" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry right0003" x="5020" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry right0004" x="5020" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry up0000" x="6024" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry up0001" x="7028" y="7288" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry up0002" x="0" y="8199" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry up0003" x="1004" y="8199" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+<SubTexture name="robosandy angry up0004" x="1004" y="8199" width="1004" height="911" frameX="0" frameY="0" frameWidth="1004" frameHeight="911" />
+</TextureAtlas>

@@ -4,7 +4,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.FlxGraphic;
 import flixel.input.keyboard.FlxKey;
 import meta.CoolUtil;
-import meta.Overlay;
+import meta.InfoHud;
 import meta.data.Highscore;
 import meta.data.dependency.Discord;
 import meta.state.*;
@@ -50,18 +50,7 @@ class Init extends FlxState
 			'Whether to have the strumline vertically flipped in gameplay.',
 			NOT_FORCED
 		],
-		'Controller Mode' => [
-			false,
-			Checkmark,
-			'Whether to use a controller instead of the keyboard to play.',
-			NOT_FORCED
-		],
-		'Auto Pause' => [
-			true,
-			Checkmark,
-			'Whether to pause the game automatically if the window is unfocused.',
-			NOT_FORCED
-		],
+		'Auto Pause' => [true, Checkmark, '', NOT_FORCED],
 		'FPS Counter' => [true, Checkmark, 'Whether to display the FPS counter.', NOT_FORCED],
 		'Memory Counter' => [
 			true,
@@ -69,12 +58,7 @@ class Init extends FlxState
 			'Whether to display approximately how much memory is being used.',
 			NOT_FORCED
 		],
-		'Debug Info' => [
-			false,
-			Checkmark,
-			'Whether to display information like your game state.',
-			NOT_FORCED
-		],
+		'Debug Info' => [false, Checkmark, 'Whether to display information like your game state.', NOT_FORCED],
 		'Reduced Movements' => [
 			false,
 			Checkmark,
@@ -91,17 +75,17 @@ class Init extends FlxState
 			'UI',
 			Selector,
 			'Choose whether the filter will be behind the notes or the UI',
-			NOT_FORCED,
+			FORCED,
 			['UI', 'Notes']
 		],
 		'Counter' => [
 			'None',
 			Selector,
 			'Choose whether you want somewhere to display your judgements, and where you want it.',
-			NOT_FORCED,
+			FORCED,
 			['None', 'Left', 'Right']
 		],
-		'Display Accuracy' => [true, Checkmark, 'Whether to display your accuracy on screen.', NOT_FORCED],
+		'Display Accuracy' => [true, Checkmark, 'Whether to display your accuracy on screen.', FORCED],
 		'Disable Antialiasing' => [
 			false,
 			Checkmark,
@@ -111,54 +95,48 @@ class Init extends FlxState
 		'No Camera Note Movement' => [
 			false,
 			Checkmark,
-			'When enabled, left and right notes no longer move the camera.',
+			'When enabled, notes no longer move the camera.',
 			NOT_FORCED
+		],
+		'Use Forever Chart Editor' => [
+			false,
+			Checkmark,
+			'When enabled, uses the custom Forever Engine chart editor!',
+			FORCED
 		],
 		'Disable Note Splashes' => [
 			false,
 			Checkmark,
 			'Whether to disable note splashes in gameplay. Useful if you find them distracting.',
-			NOT_FORCED
+			FORCED
 		],
 		// custom ones lol
 		'Offset' => [Checkmark, 3],
 		'Filter' => [
-			'none',
+			'None',
 			Selector,
 			'Choose a filter for colorblindness.',
 			NOT_FORCED,
-			['none', 'Deuteranopia', 'Protanopia', 'Tritanopia']
+			['None', 'Deuteranopia', 'Protanopia', 'Tritanopia']
 		],
-		"Clip Style" => [
-			'stepmania',
-			Selector,
-			"Chooses a style for hold note clippings; StepMania: Holds under Receptors; FNF: Holds over receptors",
-			NOT_FORCED,
-			['StepMania', 'FNF']
-		],
-		"UI Skin" => [
-			'default',
-			Selector,
-			'Choose a UI Skin for judgements, combo, etc.',
-			NOT_FORCED,
-			''
-		],
-		"Note Skin" => ['default', Selector, 'Choose a note skin.', NOT_FORCED, ''],
-		"Framerate Cap" => [120, Selector, 'Define your maximum FPS.', NOT_FORCED, ['']],
-		"Opaque Arrows" => [
-			false,
-			Checkmark,
-			"Makes the arrows at the top of the screen opaque again.",
-			NOT_FORCED
-		],
-		"Opaque Holds" => [false, Checkmark, "Huh, why isnt the trail cut off?", NOT_FORCED],
+		"Clip Style" => ['stepmania', Selector, "Chooses a style for hold note clippings; StepMania: Holds under Receptors; FNF: Holds over receptors", FORCED, 
+			['StepMania', 'FNF']],
+		"UI Skin" => ['default', Selector, 'Choose a UI Skin for judgements, combo, etc.', FORCED, ''],
+		"Note Skin" => ['default', Selector, 'Choose a note skin.', FORCED, ''],
+		"Framerate Cap" => [120, Selector, 'Define your maximum FPS.', FORCED, ['']],
+		"Opaque Arrows" => [false, Checkmark, "Makes the arrows at the top of the screen opaque again.", FORCED],
+		"Opaque Holds" => [false, Checkmark, "Huh, why isnt the trail cut off?", FORCED],
 		'Ghost Tapping' => [
-			false,
+			true,
 			Checkmark,
 			"Enables Ghost Tapping, allowing you to press inputs without missing.",
-			NOT_FORCED
+			FORCED
 		],
 		'Centered Notefield' => [false, Checkmark, "Center the notes, disables the enemy's notes."],
+		'Timer Bar' => [false, Checkmark, "Shows a timer bar and the time of the song as you play."],
+		'Disable Flashing Lights' => [false, Checkmark, "Disable any flashing lights that you are sensitive to."],
+		'Disable Miss Sounds' => [false, Checkmark, "Disable the sound of you missing notes in case you find it distracting."],
+		'Disable Death Lines' => [false, Checkmark, "Check this bubble to disable the death voicelines."],
 		"Custom Titlescreen" => [
 			false,
 			Checkmark,
@@ -175,15 +153,17 @@ class Init extends FlxState
 		'Fixed Judgements' => [
 			false,
 			Checkmark,
-			"Fixes the judgements to the camera instead of to the world itself, making them easier to read.",
-			NOT_FORCED
+			"Fixes the judgements to the camera instead of to the world itself, making them easier to read.", 
+			FORCED
 		],
 		'Simply Judgements' => [
 			false,
 			Checkmark,
 			"Simplifies the judgement animations, displaying only one judgement / rating sprite at a time.",
-			NOT_FORCED
+			FORCED
 		],
+
+
 	];
 
 	public static var trueSettings:Map<String, Dynamic> = [];
@@ -197,11 +177,7 @@ class Init extends FlxState
 		'ACCEPT' => [[FlxKey.SPACE, Z, FlxKey.ENTER], 4],
 		'BACK' => [[FlxKey.BACKSPACE, X, FlxKey.ESCAPE], 5],
 		'PAUSE' => [[FlxKey.ENTER, P], 6],
-		'RESET' => [[R, null], 13],
-		'UI_UP' => [[FlxKey.UP, W], 8],
-		'UI_DOWN' => [[FlxKey.DOWN, S], 9],
-		'UI_LEFT' => [[FlxKey.LEFT, A], 10],
-		'UI_RIGHT' => [[FlxKey.RIGHT, D], 11],
+		'RESET' => [[R, null], 7],
 	];
 
 	public static var filters:Array<BitmapFilter> = []; // the filters the game has active
@@ -256,16 +232,13 @@ class Init extends FlxState
 		FlxG.mouse.useSystemCursor = true; // Use system cursor because it's prettier
 		FlxG.mouse.visible = false; // Hide mouse on start
 		FlxGraphic.defaultPersist = true; // make sure we control all of the memory
-
+		
 		gotoTitleScreen();
 	}
 
 	private function gotoTitleScreen()
-	{
-		if (trueSettings.get("Custom Titlescreen"))
-			Main.switchState(this, new CustomTitlescreen());
-		else
-			Main.switchState(this, new TitleState());
+	{	
+		Main.switchState(this, new TitleState());
 	}
 
 	public static function loadSettings():Void
@@ -290,8 +263,8 @@ class Init extends FlxState
 		// lemme fix that for you
 		if (!Std.isOfType(trueSettings.get("Framerate Cap"), Int)
 			|| trueSettings.get("Framerate Cap") < 30
-			|| trueSettings.get("Framerate Cap") > 360)
-			trueSettings.set("Framerate Cap", 30);
+			|| trueSettings.get("Framerate Cap") > 120)
+			trueSettings.set("Framerate Cap", 120);
 
 		if (!Std.isOfType(trueSettings.get("Stage Opacity"), Int)
 			|| trueSettings.get("Stage Opacity") < 0
@@ -309,11 +282,6 @@ class Init extends FlxState
 		saveSettings();
 
 		updateAll();
-
-		if(FlxG.save.data.volume != null)
-			FlxG.sound.volume = FlxG.save.data.volume;
-		if (FlxG.save.data.mute != null)
-			FlxG.sound.muted = FlxG.save.data.mute;
 	}
 
 	public static function loadControls():Void
@@ -341,9 +309,7 @@ class Init extends FlxState
 
 	public static function updateAll()
 	{
-		FlxG.autoPause = trueSettings.get('Auto Pause');
-
-		Overlay.updateDisplayInfo(trueSettings.get('FPS Counter'), trueSettings.get('Debug Info'), trueSettings.get('Memory Counter'));
+		InfoHud.updateDisplayInfo(trueSettings.get('FPS Counter'), trueSettings.get('Debug Info'), trueSettings.get('Memory Counter'));
 
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));

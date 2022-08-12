@@ -36,18 +36,14 @@ class Paths
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
 	public static var currentTrackedTextures:Map<String, Texture> = [];
 	public static var currentTrackedSounds:Map<String, Sound> = [];
-
+	
 	public static function excludeAsset(key:String)
 	{
 		if (!dumpExclusions.contains(key))
 			dumpExclusions.push(key);
 	}
 
-	public static var dumpExclusions:Array<String> = [
-		'assets/music/freakyMenu.$SOUND_EXT',
-		'assets/music/foreverMenu.$SOUND_EXT',
-		'assets/music/breakfast.$SOUND_EXT',
-	];
+	public static var dumpExclusions:Array<String> = [];
 
 	/// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory()
@@ -75,14 +71,14 @@ class Paths
 						openfl.Assets.cache.removeBitmapData(key);
 						FlxG.bitmap._cache.remove(key);
 					}
-					trace('removed $key, ' + (isTexture ? 'is a texture' : 'is not a texture'));
+					//trace('removed $key, ' + (isTexture ? 'is a texture' : 'is not a texture'));
 					obj.destroy();
 					currentTrackedAssets.remove(key);
 					counter++;
 				}
 			}
 		}
-		trace('removed $counter assets');
+		//trace('removed $counter assets');
 		// run the garbage collector for good measure lmfao
 		System.gc();
 	}
@@ -113,7 +109,7 @@ class Paths
 				Assets.cache.clear(key);
 				currentTrackedSounds.remove(key);
 			}
-		}
+		}	
 		// flags everything to be cleared out next unused memory clear
 		localTrackedAssets = [];
 	}
@@ -141,7 +137,7 @@ class Paths
 				else
 				{
 					newGraphic = FlxGraphic.fromBitmapData(bitmap, false, key, false);
-					trace('new bitmap $key, not textured');
+					//trace('new bitmap $key, not textured');
 				}
 				currentTrackedAssets.set(key, newGraphic);
 			}
@@ -152,21 +148,19 @@ class Paths
 		return null;
 	}
 
-	public static function returnSound(path:String, key:String, ?library:String)
-	{
+	public static function returnSound(path:String, key:String, ?library:String) {
 		// I hate this so god damn much
 		var gottenPath:String = getPath('$path/$key.$SOUND_EXT', SOUND, library);
 		gottenPath = gottenPath.substring(gottenPath.indexOf(':') + 1, gottenPath.length);
 		// trace(gottenPath);
 		if (!currentTrackedSounds.exists(gottenPath))
-			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
+			currentTrackedSounds.set(gottenPath, Sound.fromFile('./' + gottenPath));
 		localTrackedAssets.push(key);
 		return currentTrackedSounds.get(gottenPath);
 	}
 
 	//
-	inline public static function getPath(file:String, type:AssetType, ?library:Null<String>)
-	{
+	inline public static function getPath(file:String, type:AssetType, ?library:Null<String>) {
 		/*
 				Okay so, from what I understand, this loads in the current path based on the level
 				we're in (if a library is not specified), say like week 1 or something, 
@@ -215,96 +209,80 @@ class Paths
 		for now I'm more focused on getting this to run than anything and I'll clean out the code later as I do want to organise
 		everything later 
 	 */
-	static public function getLibraryPath(file:String, library = "preload")
-	{
+	static public function getLibraryPath(file:String, library = "preload") {
 		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
 	}
 
-	inline static function getLibraryPathForce(file:String, library:String)
-	{
+	inline static function getLibraryPathForce(file:String, library:String) {
 		return '$library/$file';
 	}
 
-	inline static function getPreloadPath(file:String)
-	{
+	inline static function getPreloadPath(file:String) {
 		var returnPath:String = 'assets/$file';
 		if (!FileSystem.exists(returnPath))
 			returnPath = CoolUtil.swapSpaceDash(returnPath);
 		return returnPath;
 	}
 
-	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
-	{
+	inline static public function file(file:String, type:AssetType = TEXT, ?library:String) {
 		return getPath(file, type, library);
 	}
 
-	inline static public function txt(key:String, ?library:String)
-	{
+	inline static public function txt(key:String, ?library:String) {
 		return getPath('$key.txt', TEXT, library);
 	}
 
-	inline static public function xml(key:String, ?library:String)
-	{
+	inline static public function xml(key:String, ?library:String) {
 		return getPath('data/$key.xml', TEXT, library);
 	}
 
-	inline static public function offsetTxt(key:String, ?library:String)
-	{
+	inline static public function offsetTxt(key:String, ?library:String) {
 		return getPath('images/characters/$key.txt', TEXT, library);
 	}
 
-	inline static public function json(key:String, ?library:String)
-	{
+	inline static public function json(key:String, ?library:String) {
 		return getPath('songs/$key.json', TEXT, library);
 	}
 
 	inline static public function songJson(song:String, secondSong:String, ?library:String)
 		return getPath('songs/${song.toLowerCase()}/${secondSong.toLowerCase()}.json', TEXT, library);
 
-	static public function sound(key:String, ?library:String):Dynamic
-	{
+	static public function sound(key:String, ?library:String):Dynamic {
 		var sound:Sound = returnSound('sounds', key, library);
 		return sound;
 	}
-
-	inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String)
-	{
+	
+	inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String) {
 		return sound(key + FlxG.random.int(min, max), library);
 	}
 
-	inline static public function music(key:String, ?library:String):Dynamic
-	{
+	inline static public function music(key:String, ?library:String):Dynamic {
 		var file:Sound = returnSound('music', key, library);
 		return file;
 	}
 
-	inline static public function voices(song:String):Any
-	{
+	inline static public function voices(song:String):Any {
 		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/Voices';
 		var voices = returnSound('songs', songKey);
 		return voices;
 	}
 
-	inline static public function inst(song:String):Any
-	{
+	inline static public function inst(song:String):Any	{
 		var songKey:String = '${CoolUtil.swapSpaceDash(song.toLowerCase())}/Inst';
 		var inst = returnSound('songs', songKey);
 		return inst;
 	}
 
-	inline static public function image(key:String, ?library:String, ?textureCompression:Bool = false)
-	{
+	inline static public function image(key:String, ?library:String, ?textureCompression:Bool = false) {
 		var returnAsset:FlxGraphic = returnGraphic(key, library, textureCompression);
 		return returnAsset;
 	}
 
-	inline static public function font(key:String)
-	{
+	inline static public function font(key:String) {
 		return 'assets/fonts/$key';
 	}
 
-	inline static public function getSparrowAtlas(key:String, ?library:String)
-	{
+	inline static public function getSparrowAtlas(key:String, ?library:String) {
 		var graphic:FlxGraphic = returnGraphic(key, library);
 		return (FlxAtlasFrames.fromSparrow(graphic, File.getContent(file('images/$key.xml', library))));
 	}

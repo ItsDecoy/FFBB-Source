@@ -40,7 +40,7 @@ class ForeverAssets
 			default:
 				newSprite.alpha = 1;
 				newSprite.screenCenter();
-				newSprite.x += (43 * scoreInt) + 20;
+				newSprite.x += (43 * scoreInt) + 140;
 				newSprite.y += 60;
 
 				newSprite.color = FlxColor.WHITE;
@@ -53,7 +53,7 @@ class ForeverAssets
 				newSprite.animation.play('base');
 		}
 
-		if (assetModifier == 'pixel')
+		if (assetModifier == 'pixel') 
 			newSprite.setGraphicSize(Std.int(newSprite.width * PlayState.daPixelZoom));
 		else
 		{
@@ -63,15 +63,14 @@ class ForeverAssets
 		newSprite.updateHitbox();
 		if (!Init.trueSettings.get('Simply Judgements'))
 		{
-			newSprite.acceleration.y = FlxG.random.int(200, 300);
-			newSprite.velocity.y = -FlxG.random.int(140, 160);
-			newSprite.velocity.x = FlxG.random.float(-5, 5);
-		}
+		newSprite.acceleration.y = FlxG.random.int(200, 300);
+		newSprite.velocity.y = -FlxG.random.int(140, 160);
+		newSprite.velocity.x = FlxG.random.float(-5, 5);}
 
 		return newSprite;
 	}
 
-	public static function generateRating(asset:String, perfectSick:Bool, timing:String, assetModifier:String = 'base', changeableSkin:String = 'default',
+	public static function generateRating(asset:String, perfectSick:Bool, assetModifier:String = 'base', changeableSkin:String = 'default',
 			baseLibrary:String):FlxSprite
 	{
 		var width = 500;
@@ -88,16 +87,44 @@ class ForeverAssets
 			default:
 				rating.alpha = 1;
 				rating.screenCenter();
-				rating.x = (FlxG.width * 0.55) - 40;
-				rating.y -= 60;
+				if (PlayState.curSong.toLowerCase() == 'on-ice')
+				{
+					rating.x = PlayState.boyfriend.x - 20;
+					rating.y -= 290;
+				}
+				else if (PlayState.curSong.toLowerCase() == 'plan-z')
+				{
+					rating.x = (FlxG.width * 0.86) - 40;
+					rating.y -= 25;
+				}
+				else if (PlayState.curSong.toLowerCase() == 'pimpin')
+				{
+					rating.x = (FlxG.width * 0.01) - 120;
+					rating.y -= 60;
+				}
+				else if (PlayState.curSong.toLowerCase() == 'scrapped-metal')
+				{
+					rating.x = (FlxG.width * 0.55) - 40;
+					rating.y += 220;
+				}
+				else if (PlayState.curSong.toLowerCase() == 'nuts-and-bolts')
+				{
+					rating.x = (FlxG.width * 0.50) - 40;
+					rating.y += 25;
+				}
+				else
+				{
+					rating.x = (FlxG.width * 0.55) - 40;
+					rating.y -= 60;
+				}
 				if (!Init.trueSettings.get('Simply Judgements'))
 				{
-					rating.acceleration.y = 550;
-					rating.velocity.y = -FlxG.random.int(140, 175);
-					rating.velocity.x = -FlxG.random.int(0, 10);
+				rating.acceleration.y = 550;
+				rating.velocity.y = -FlxG.random.int(140, 175);
+				rating.velocity.x = -FlxG.random.int(0, 10);
 				}
 				rating.animation.add('base', [
-					Std.int((Timings.judgementsMap.get(asset)[0] * 2) + (perfectSick ? 0 : 2) + (timing == 'late' ? 1 : 0))
+					Std.int((Timings.judgementsMap.get(asset)[0] * 2) + (perfectSick ? 0 : 2))
 				], 24, false);
 				rating.animation.play('base');
 		}
@@ -113,15 +140,15 @@ class ForeverAssets
 		return rating;
 	}
 
-	public static function generateNoteSplashes(asset:String, assetModifier:String = 'base', changeableSkin:String = 'default', baseLibrary:String,
-			noteData:Int):NoteSplash
+	public static function generateNoteSplashes(asset:String, assetModifier:String = 'base', changeableSkin:String = 'default', baseLibrary:String, noteData:Int):NoteSplash
 	{
 		//
 		var tempSplash:NoteSplash = new NoteSplash(noteData);
 		switch (assetModifier)
 		{
 			case 'pixel':
-				tempSplash.loadGraphic(Paths.image(ForeverTools.returnSkinAsset('splash-pixel', assetModifier, changeableSkin, baseLibrary)), true, 34, 34);
+				tempSplash.loadGraphic(Paths.image(ForeverTools.returnSkinAsset('splash-pixel', assetModifier, changeableSkin, baseLibrary)), true, 34,
+					34);
 				tempSplash.animation.add('anim1', [noteData, 4 + noteData, 8 + noteData, 12 + noteData], 24, false);
 				tempSplash.animation.add('anim2', [16 + noteData, 20 + noteData, 24 + noteData, 28 + noteData], 24, false);
 				tempSplash.animation.play('anim1');
@@ -245,9 +272,8 @@ class ForeverAssets
 		else
 			newNote = Note.returnDefaultNote(assetModifier, strumTime, noteData, noteType, noteAlt, isSustainNote, prevNote);
 
-		// hold note shit
-		if (isSustainNote && prevNote != null)
-		{
+		// hold note shit 
+		if (isSustainNote && prevNote != null) {
 			// set note offset
 			if (prevNote.isSustainNote)
 				newNote.noteVisualOffset = prevNote.noteVisualOffset;
@@ -281,12 +307,12 @@ class ForeverAssets
 				// animation.addByPrefix('false finished', 'Check Box unselected', 24, true);
 				// animation.addByPrefix('true finished', 'Check Box Selected Static', 24, true);
 				// animation.addByPrefix('true', 'Check Box selecting animation', 24, false);
-				newCheckmark.setGraphicSize(Std.int(newCheckmark.width * 0.7));
+				newCheckmark.setGraphicSize(Std.int(newCheckmark.width * 0.5));
 				newCheckmark.updateHitbox();
 
 				///*
-				var offsetByX = 45;
-				var offsetByY = 5;
+				var offsetByX = 5;
+				var offsetByY = -15;
 				newCheckmark.addOffset('false', offsetByX, offsetByY);
 				newCheckmark.addOffset('true', offsetByX, offsetByY);
 				newCheckmark.addOffset('true finished', offsetByX, offsetByY);

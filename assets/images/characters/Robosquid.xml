@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Robosquid.png"><SubTexture name="Robosquid idle0000" x="0" y="0" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid idle0001" x="1004" y="0" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid idle0002" x="2008" y="0" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid idle0003" x="3012" y="0" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid idle0004" x="3012" y="0" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid idle0005" x="3012" y="0" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid idle0006" x="3012" y="0" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid down0000" x="4016" y="0" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid down0001" x="0" y="671" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid down0002" x="1004" y="671" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid down0003" x="2008" y="671" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid down0004" x="2008" y="671" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid down0005" x="2008" y="671" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid up0000" x="3012" y="671" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid up0001" x="4016" y="671" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid up0002" x="0" y="1342" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid up0003" x="1004" y="1342" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid up0004" x="1004" y="1342" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid up0005" x="1004" y="1342" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid left0000" x="2008" y="1342" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid left0001" x="3012" y="1342" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid left0002" x="4016" y="1342" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid left0003" x="0" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid left0004" x="0" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid left0005" x="0" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid right0000" x="1004" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid right0001" x="2008" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid right0002" x="3012" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid right0003" x="4016" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid right0004" x="4016" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid right0005" x="4016" y="2013" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid taunt0000" x="0" y="2684" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid taunt0001" x="1004" y="2684" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid taunt0002" x="2008" y="2684" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid taunt0003" x="3012" y="2684" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid taunt0004" x="4016" y="2684" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid taunt0005" x="4016" y="2684" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+<SubTexture name="Robosquid taunt0006" x="0" y="3355" width="1004" height="671" frameX="0" frameY="0" frameWidth="1004" frameHeight="671" />
+</TextureAtlas>

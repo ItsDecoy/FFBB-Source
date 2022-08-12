@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="bubblesCheckbox.png">
+<SubTexture name="uncheckFinished0000" x="0" y="0" width="127" height="127" frameX="0" frameY="0" frameWidth="127" frameHeight="127" />
+<SubTexture name="checkFinished0000" x="0" y="127" width="127" height="127" frameX="0" frameY="0" frameWidth="127" frameHeight="127" />
+<SubTexture name="check0000" x="0" y="127" width="127" height="127" frameX="0" frameY="0" frameWidth="127" frameHeight="127" />
+<SubTexture name="uncheck0000" x="0" y="0" width="127" height="127" frameX="0" frameY="0" frameWidth="127" frameHeight="127" />
+</TextureAtlas>

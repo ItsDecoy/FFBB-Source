@@ -1,6 +1,6 @@
 package meta.data.dependency;
 
-#if DISCORD_RPC
+#if !html5
 import discord_rpc.DiscordRpc;
 #end
 import lime.app.Application;
@@ -11,12 +11,12 @@ import lime.app.Application;
 **/
 class Discord
 {
-	#if DISCORD_RPC
+	#if !html5
 	// set up the rich presence initially
 	public static function initializeRPC()
 	{
 		DiscordRpc.start({
-			clientID: "879525344128925717",
+			clientID: "962858524826800158",
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
@@ -32,8 +32,8 @@ class Discord
 		DiscordRpc.presence({
 			details: "",
 			state: null,
-			largeImageKey: 'iconog',
-			largeImageText: "Forever Engine"
+			largeImageKey: 'freaky',
+			largeImageText: "FNF in: Funkin for Bikini Bottom!"
 		});
 	}
 
@@ -49,7 +49,10 @@ class Discord
 
 	//
 
-	public static function changePresence(details:String = '', state:Null<String> = '', ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float)
+	/* This function contains a new installation at the end called 'icon' which will track the discord image being used for the certain states you're in the game.
+		Due to 'largeImageKey' reading a String for a picture, the 'icon' variable that's a String is used for 'largeImageKey' to track for each song and state.
+	    Me and Decoy spent a little while figuring this out and he's mainly responsible for the idea. We did get inspiration from Afton, so credits to them. - doubletime32 */
+	public static function changePresence(details:String = '', state:Null<String> = '', ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float, ?icon: String)
 	{
 		var startTimestamp:Float = (hasStartTimestamp) ? Date.now().getTime() : 0;
 
@@ -59,8 +62,8 @@ class Discord
 		DiscordRpc.presence({
 			details: details,
 			state: state,
-			largeImageKey: 'iconog',
-			largeImageText: "Forever Engine",
+			largeImageKey: icon,
+			largeImageText: "FNF in: Funkin for Bikini Bottom!",
 			smallImageKey: smallImageKey,
 			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp: Std.int(startTimestamp / 1000),

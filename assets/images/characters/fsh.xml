@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="fsh.png"><SubTexture name="fsh idle0000" x="0" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0000" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0001" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0002" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0003" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0004" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0005" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0006" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0007" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh up0008" x="1004" y="0" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0000" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0001" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0002" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0003" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0004" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0005" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0006" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0007" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh left0008" x="0" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0000" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0001" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0002" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0003" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0004" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0005" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0006" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0007" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh down0008" x="1004" y="929" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0000" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0001" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0002" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0003" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0004" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0005" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0006" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0007" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+<SubTexture name="fsh right0008" x="0" y="1858" width="1004" height="929" frameX="0" frameY="0" frameWidth="1004" frameHeight="929" />
+</TextureAtlas>
