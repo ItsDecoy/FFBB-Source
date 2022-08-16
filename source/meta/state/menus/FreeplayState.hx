@@ -109,10 +109,6 @@ class FreeplayState extends MusicBeatState
 		// LOAD MUSIC
 		// ForeverTools.resetMenuMusic();
 
-		#if !html5 
-		Discord.changePresence('Ordering A Battle', 'Freeplay', " ", TitleState.titleImage);
-		#end
-
 		// LOAD CHARACTERS
 		bgBack = new FlxSprite().loadGraphic(Paths.image('menus/base/freeplay/bgBack'));
 		bgBack.antialiasing = true;
@@ -242,6 +238,10 @@ class FreeplayState extends MusicBeatState
 		loading.antialiasing = true;
 		loading.visible = false;
 		add(loading);
+
+		#if android
+		addVirtualPad(LEFT_FULL, A_B);
+		#end
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, songColor:FlxColor)
@@ -249,8 +249,8 @@ class FreeplayState extends MusicBeatState
 		///*
 		var coolDifficultyArray = [];
 		for (i in CoolUtil.difficultyArray)
-			if (FileSystem.exists(Paths.songJson(songName, songName + '-' + i))
-				|| (FileSystem.exists(Paths.songJson(songName, songName)) && i == "NORMAL"))
+			if (FileSystem.exists(SUtil.getPath() + Paths.songJson(songName, songName + '-' + i))
+				|| (FileSystem.exists(SUtil.getPath() + Paths.songJson(songName, songName)) && i == "NORMAL"))
 				coolDifficultyArray.push(i);
 
 		if (coolDifficultyArray.length > 0)
@@ -294,8 +294,8 @@ class FreeplayState extends MusicBeatState
 		if (squeakSound > 2)
 			squeakSound = 1;
 
-		var upP = controls.UP_P;
-		var downP = controls.DOWN_P;
+		var upP = controls.UI_UP_P;
+		var downP = controls.UI_DOWN_P;
 		var accepted = controls.ACCEPT;
 
 		if (upP && !selectedSong)
@@ -311,9 +311,9 @@ class FreeplayState extends MusicBeatState
 			squeakSound++;
 		}
 
-		if (controls.LEFT_P && !selectedSong)
+		if (controls.UI_LEFT_P && !selectedSong)
 			changeDiff(-1);
-		if (controls.RIGHT_P && !selectedSong)
+		if (controls.UI_RIGHT_P && !selectedSong)
 			changeDiff(1);
 
 		if (controls.BACK && !selectedSong)

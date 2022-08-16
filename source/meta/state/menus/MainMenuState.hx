@@ -158,6 +158,10 @@ class MainMenuState extends MusicBeatState
 		bubbleRise.loadParticles(Paths.image('particles/BubbleTransition'), 500, 16, true);
 		bubbleRise.start(false, FlxG.random.float(0.08, 0.01), 1000000);
 
+		#if android
+		addVirtualPad(UP_DOWN, A_B);
+		#end
+
 		FlxG.mouse.visible = false;
 		FlxG.mouse.enabled = false;
 		FlxG.mouse.useSystemCursor = false;

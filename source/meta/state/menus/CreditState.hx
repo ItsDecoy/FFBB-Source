@@ -68,10 +68,6 @@ class CreditState extends MusicBeatState
     {
         super.create();
 
-        #if !html5
-		Discord.changePresence('Checking Each Employee', 'Credits Menu', " ", TitleState.titleImage);
-		#end
-
 		bg = new FlxSprite().loadGraphic(Paths.image('menus/base/credits/employeeOfTheMonth'));
 		bg.antialiasing = true;
 		add(bg);
@@ -131,7 +127,11 @@ class CreditState extends MusicBeatState
 		description.antialiasing = true;
 		description.alpha = 0;
 		add(description);
-		
+
+		#if android
+		addVirtualPad(NONE, B);
+		#end
+
 		FlxG.mouse.visible = true;
 		FlxG.mouse.enabled = true;
 		FlxG.mouse.useSystemCursor = true;
