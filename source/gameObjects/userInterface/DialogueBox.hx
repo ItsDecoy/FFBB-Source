@@ -99,8 +99,8 @@ class DialogueBox extends FlxSpriteGroup
 
 	public function dialoguePath(file:String):String
 	{
-		var dialoguePath = Paths.file('assets/images/dialogue/portraits/$curCharacter/$file');
-		var truePath = Paths.file(file);
+		var dialoguePath = SUtil.getPath() + Paths.file('assets/images/dialogue/portraits/$curCharacter/$file');
+		var truePath = SUtil.getPath() + Paths.file(file);
 
 		// load the json file
 		if (sys.FileSystem.exists(dialoguePath))
@@ -151,7 +151,11 @@ class DialogueBox extends FlxSpriteGroup
 		add(alphabetText);
 
 		// skip text
+		#if android
+    var skipText = new FlxText(100, 670, 1000, "PRESS BACK ON YOUR PHONE TP SKIP", 20);
+    #else
 		var skipText = new FlxText(100, 670, 1000, "PRESS SHIFT TO SKIP", 20);
+		#end
 		skipText.alignment = FlxTextAlign.CENTER;
 
 		skipText.borderStyle = FlxTextBorderStyle.OUTLINE;
@@ -227,7 +231,7 @@ class DialogueBox extends FlxSpriteGroup
 			curBoxState = newState;
 
 			// get the path to the json
-			var boxJson = Paths.file('images/dialogue/boxes/$curBox/$curBox.json');
+			var boxJson = SUtil.getPath() + Paths.file('images/dialogue/boxes/$curBox/$curBox.json');
 
 			// load the json and sprite
 			boxData = haxe.Json.parse(sys.io.File.getContent(boxJson));
@@ -313,7 +317,7 @@ class DialogueBox extends FlxSpriteGroup
 			{
 				// made the curCharacter the new character
 				curCharacter = newChar;
-				var portraitJson = Paths.file('images/dialogue/portraits/$curCharacter/$curCharacter.json');
+				var portraitJson = SUtil.getPath() + Paths.file('images/dialogue/portraits/$curCharacter/$curCharacter.json');
 
 				// load the json file
 				if (sys.FileSystem.exists(portraitJson))
