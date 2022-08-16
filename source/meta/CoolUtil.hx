@@ -65,7 +65,7 @@ class CoolUtil
 		//
 		var libraryArray:Array<String> = [];
 		#if !html5
-		var unfilteredLibrary = FileSystem.readDirectory('$subDir/$library');
+		var unfilteredLibrary = FileSystem.readDirectory(SUtil.getPath() + '$subDir/$library');
 
 		for (folder in unfilteredLibrary)
 		{
