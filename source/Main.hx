@@ -69,7 +69,7 @@ class Main extends Sprite
 	public static var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 
 	public static var mainClassState:Class<FlxState> = Init; // Determine the main class state of the game
-	public static var framerate:Int = 120; // How many frames per second the game should run at.
+	public static var framerate:Int = 60; // How many frames per second the game should run at.
 
 	public static var gameVersion:String = '0.3';
 
@@ -140,6 +140,8 @@ class Main extends Sprite
 			// this just kind of sets up the camera zoom in accordance to the surface width and camera zoom.
 			// if set to negative one, it is done so automatically, which is the default.
 		}
+
+		SUtil.check();
 
 		FlxTransitionableState.skipNextTransIn = true;
 		
@@ -219,7 +221,7 @@ class Main extends Sprite
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		path = "./crash/" + "FE_" + dateNow + ".txt";
+		path = SUtil.getPath() + "crash/" + "FE_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -234,21 +236,21 @@ class Main extends Sprite
 
 		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/Yoshubs/Forever-Engine";
 
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if (!FileSystem.exists(SUtil.getPath() + "crash/"))
+			FileSystem.createDirectory(SUtil.getPath() + "crash/");
 
 		File.saveContent(path, errMsg + "\n");
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
-		var crashDialoguePath:String = "FE-CrashDialog";
+		var crashDialoguePath:String = SUtil.getPath() + "FE-CrashDialog";
 
 		#if windows
 		crashDialoguePath += ".exe";
 		#end
 
-		if (FileSystem.exists("./" + crashDialoguePath))
+		if (FileSystem.exists(crashDialoguePath))
 		{
 			Sys.println("Found crash dialog: " + crashDialoguePath);
 
