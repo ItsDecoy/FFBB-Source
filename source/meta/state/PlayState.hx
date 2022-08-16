@@ -498,6 +498,10 @@ class PlayState extends MusicBeatState
 				curImage = "freaky";
 		}
 
+		#if android
+		addAndroidControls();
+		#end
+
 		//
 		keysArray = [
 			copyKey(Init.gameControls.get('LEFT')[0]),
@@ -506,8 +510,11 @@ class PlayState extends MusicBeatState
 			copyKey(Init.gameControls.get('RIGHT')[0])
 		];
 
-		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-		FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		if (!Init.trueSettings.get('Controller Mode'))
+		{
+			FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			FlxG.stage.addEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		}
 		
 		Paths.clearUnusedMemory();
 
@@ -547,7 +554,7 @@ class PlayState extends MusicBeatState
 
 		if ((key >= 0)
 			&& !boyfriendStrums.autoplay
-			&& (FlxG.keys.checkStatus(eventKey, JUST_PRESSED))
+      && (FlxG.keys.checkStatus(eventKey, JUST_PRESSED) || Init.trueSettings.get('Controller Mode'))
 			&& (FlxG.keys.enabled && !paused && (FlxG.state.active || FlxG.state.persistentUpdate)))
 		{
 			if (generatedMusic)
@@ -628,8 +635,11 @@ class PlayState extends MusicBeatState
 	}
 
 	override public function destroy() {
-		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
-		FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		if (!Init.trueSettings.get('Controller Mode'))
+		{
+			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyPress);
+			FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, onKeyRelease);
+		}
 
 		super.destroy();
 	}
@@ -693,21 +703,6 @@ class PlayState extends MusicBeatState
 			dadOpponent.dance();
 
 		if (!inCutscene) {
-			// pause the game if the game is allowed to pause and enter is pressed
-			if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
-			{
-				// update drawing stuffs
-				persistentUpdate = false;
-				persistentDraw = true;
-				paused = true;
-				songMusic.pause();
-				vocals.pause();
-
-				// open pause substate
-				openSubState(new PauseSubState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-				updateRPC(true);
-			}
-
 			///*
 			if (startingSong)
 			{
@@ -890,6 +885,9 @@ class PlayState extends MusicBeatState
 			}
 
 			noteCalls();
+
+			if (Init.trueSettings.get('Controller Mode'))
+				controllerInput();
 		}
 
 		if ((curSong.toLowerCase() != 'doodle-duel' && curSong.toLowerCase() != 'on-ice' && curSong.toLowerCase() != 'plan-z' && curSong.toLowerCase() != 'pimpin') 
@@ -898,6 +896,41 @@ class PlayState extends MusicBeatState
 			if (stageBuild.gfExist)
 				gf.setGraphicSize(Std.int(gf.width * 0.4));
 			sizeChange = true;
+		}
+	}
+	
+  function controllerInput()
+	{
+		var justPressArray:Array<Bool> = [
+			controls.LEFT_P,
+			controls.DOWN_P,
+			controls.UP_P,
+			controls.RIGHT_P
+		];
+
+		var justReleaseArray:Array<Bool> = [
+			controls.LEFT_R,
+			controls.DOWN_R,
+			controls.UP_R,
+			controls.RIGHT_R
+		];
+
+		if (justPressArray.contains(true))
+		{
+			for (i in 0...justPressArray.length)
+			{
+				if (justPressArray[i])
+					onKeyPress(new KeyboardEvent(KeyboardEvent.KEY_DOWN, true, true, -1, keysArray[i][0]));
+			}
+		}
+
+		if (justReleaseArray.contains(true))
+		{
+			for (i in 0...justReleaseArray.length)
+			{
+				if (justReleaseArray[i])
+					onKeyRelease(new KeyboardEvent(KeyboardEvent.KEY_UP, true, true, -1, keysArray[i][0]));
+			}
 		}
 	}
 
@@ -1366,15 +1399,10 @@ class PlayState extends MusicBeatState
 
 		if (underwearHealth > -2)
 		{
-			if (!practiceMode)
-			{
-				if (Conductor.songPosition > 0 && !pausedRPC)
-					Discord.changePresence(displayRPC, iconRPC, true, songLength - Conductor.songPosition, curImage);
-				else
-					Discord.changePresence(displayRPC, iconRPC, " ", curImage);
-			}
+			if (Conductor.songPosition > 0 && !pausedRPC)
+				Discord.changePresence(displayRPC, detailsSub, iconRPC, true, songLength - Conductor.songPosition);
 			else
-				Discord.changePresence('Practicing: ' + songDetails, iconRPC, " ", curImage);
+				Discord.changePresence(displayRPC, detailsSub, iconRPC);
 		}
 		#end
 	}
@@ -1957,6 +1985,10 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
+	  #if android
+	  androidControls.visible = false;
+	  #end
+
 		canPause = false;
 		songMusic.volume = 0;
 		vocals.volume = 0;
@@ -2098,6 +2130,10 @@ class PlayState extends MusicBeatState
 
 	private function startCountdown():Void
 	{
+	  #if android
+	  androidControls.visible = true;
+	  #end
+
 		inCutscene = false;
 		Conductor.songPosition = -(Conductor.crochet * 5);
 		swagCounter = 0;
