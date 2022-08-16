@@ -165,6 +165,11 @@ class GameOverSubstate extends MusicBeatSubState
 		Conductor.changeBPM(75);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.01);
+
+		#if android
+		addVirtualPad(NONE, A_B);
+		addPadCamera();
+		#end
 	}
 
 	override function update(elapsed:Float)

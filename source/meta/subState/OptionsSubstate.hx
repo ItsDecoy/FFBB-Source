@@ -128,6 +128,11 @@ class OptionsSubstate extends MusicBeatSubState
 		submenu.visible = false;
 		submenuGroup.visible = false;
 		submenuoffsetGroup.visible = false;
+
+		#if android
+		addVirtualPad(LEFT_FULL, A_B);
+		addPadCamera();
+		#end
 	}
 
 	private var keyOptions:FlxTypedGroup<FlxText>;
@@ -315,7 +320,14 @@ class OptionsSubstate extends MusicBeatSubState
 				});
 			}
 			else if (controls.BACK)
+			{
+				#if android
+				flixel.addons.transition.FlxTransitionableState.skipNextTransOut = true;
+				FlxG.resetState();
+				#else
 				close();
+				#end
+			}
 		}
 		else
 			subMenuControl();

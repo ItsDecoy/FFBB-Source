@@ -113,7 +113,10 @@ class PracticeResultSubState extends MusicBeatSubState
 
         FlxG.sound.playMusic(Paths.music('breakfast'), 0);
 		FlxG.sound.music.fadeIn(2, 0, 0.7);
-
+		
+		#if android
+		addVirtualPad(UP_DOWN, A_B);
+		#end
     }
 
     override function update(elapsed:Float)
