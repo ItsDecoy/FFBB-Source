@@ -48,7 +48,7 @@ class CreditState extends MusicBeatState
 		'-Artist\n-Designed Doodlebob\'s Background\n', 
 		'-Artist\n-Made The Robosquid BG\n', 
 		'-Lead Coder And Voice Actor\n-Coded 95% Of FFBB\n-Optimized Every Sprite In The Files\nTo Run On Low End Devices\n-Charted The Other Difficulties\n-Designed Shiny Object Sprite\n-Designed Splash In Pause Menu\n-Designed Bubbles For Particles And\nOptions\n-Voice Acted Plankton\n', 
-		'-Coder And Charter\n-Ported On Ice To Forever Engine\n-Setup The Discord RPC\n-Charted Plan Z\n-Removed Unnecessary Files\n-Uploaded Source Code', 
+		'-Coder And Charter\n-Ported On Ice To Forever Engine\n-Setup The Discord RPC\n-Charted Plan Z\n-Removed Unnecessary Files\n', 
 		'-Coder\n-Removed Unnecessary Files\n-Changed Some Initial Stage Setup\n-Added Funny Things To The Files\n', 
 		'-Musician\n-Composed Nuts And Bolts\n-Composed Pimpin\n', 
 		'-Musician And Voice Actor\n-Composed Plan Z\n-Voice Acted Fish Announcer\n', 
