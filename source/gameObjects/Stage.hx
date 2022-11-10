@@ -144,7 +144,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				add(bgNote);
 
 				krabs = new FNFSprite(1300, 370).loadGraphic(Paths.image('backgrounds/KK/FrozenKrabs'));
-				krabs.setGraphicSize(Std.int(krabs.width * 0.75));
+				krabs.scale.scale(0.75);
 				krabs.antialiasing = true;
 				add(krabs);
 
@@ -155,11 +155,11 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				krustyKrabDancersBG.add(crowd);
 
 				var mindy:BackgroundDancer = new BackgroundDancer(965, 440, 'mindy', 300, 304);
-				mindy.setGraphicSize(Std.int(mindy.width * 1.1));
+				mindy.scale.scale(1.1);
 				krustyKrabDancersBG.add(mindy);
 
 				var squidward:BackgroundDancer = new BackgroundDancer(670, 300, 'squidward', 171, 473);
-				squidward.setGraphicSize(Std.int(squidward.width * 0.8));
+				squidward.scale.scale(0.8);
 				krustyKrabDancersBG.add(squidward);
 
 				table = new FNFSprite(-550, -510).loadGraphic(Paths.image('backgrounds/KK/IMG_5531'), true, 2560, 1440);
